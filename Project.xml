@@ -106,7 +106,7 @@
 	<section if="desktop">
 		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
 		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
-	</section>
+	</section
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
