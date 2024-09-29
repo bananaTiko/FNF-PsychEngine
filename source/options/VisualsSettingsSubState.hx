@@ -126,7 +126,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.onChange = onChangeFPSCounter;
 		#end
 
-		#if desktop
+		#if windows
 		var option:Option = new Option('Tile Bar Color',
 			"What Tile Bar color do you prefer?'",
 			'WindowBar',
