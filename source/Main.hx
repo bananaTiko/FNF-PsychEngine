@@ -17,7 +17,9 @@ import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import lime.app.Application;
 import states.TitleState;
+#if Windows
 import hxwindowmode.WindowColorMode;
+#end
 
 #if linux
 import lime.graphics.Image;
