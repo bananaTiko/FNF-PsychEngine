@@ -194,18 +194,22 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		changedMusic = true;
 	}
 	
-	var changedWindowBar:Bool = false;
-	function onChangeWindowBar()
-		if(ClientPrefs.data.WindowBar == 'Light')
-			WindowColorMode.setLightMode();
-			WindowColorMode.redrawWindowHeader();
-		else
-			WindowColorMode.setDarkMode();
-			WindowColorMode.redrawWindowHeader();
+var changedWindowBar:Bool = false;
 
-		changedWindowBar = true;
-	}
+function onChangeWindowBar() {
+    if (ClientPrefs.data.WindowBar == 'Light') {
+        WindowColorMode.setLightMode();
+        WindowColorMode.redrawWindowHeader();
+    } else if (ClientPrefs.data.WindowBar == 'Dark') {
+        WindowColorMode.setDarkMode();
+        WindowColorMode.redrawWindowHeader();
+    } else {
+        WindowColorMode.setLightMode(); // Default action for 'else'
+        WindowColorMode.redrawWindowHeader();
+    }
 
+    changedWindowBar = true;
+}
 	function onChangeNoteSkin()
 	{
 		notes.forEachAlive(function(note:StrumNote) {
