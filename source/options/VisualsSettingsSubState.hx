@@ -197,7 +197,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 
 		changedMusic = true;
 	}
-	
+
+#if windows	
 var changedWindowBar:Bool = false;
 
 function onChangeWindowBar() {
@@ -214,6 +215,8 @@ function onChangeWindowBar() {
 
     changedWindowBar = true;
 }
+#end
+
 	function onChangeNoteSkin()
 	{
 		notes.forEachAlive(function(note:StrumNote) {
