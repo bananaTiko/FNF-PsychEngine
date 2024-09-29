@@ -197,10 +197,10 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 var changedWindowBar:Bool = false;
 
 function onChangeWindowBar() {
-    if (ClientPrefs.data.WindowBar == 'Light') {
+    if (ClientPrefs.data.windowBar == 'Light') {
         WindowColorMode.setLightMode();
         WindowColorMode.redrawWindowHeader();
-    } else if (ClientPrefs.data.WindowBar == 'Dark') {
+    } else if (ClientPrefs.data.windowBar == 'Dark') {
         WindowColorMode.setDarkMode();
         WindowColorMode.redrawWindowHeader();
     } else {
