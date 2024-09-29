@@ -199,7 +199,7 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		if(ClientPrefs.data.WindowBar == 'Light')
 			WindowColorMode.setLightMode();
 			WindowColorMode.redrawWindowHeader();
-		else if(ClientPrefs.data.WindowBar == 'Dark')
+		else
 			WindowColorMode.setDarkMode();
 			WindowColorMode.redrawWindowHeader();
 
