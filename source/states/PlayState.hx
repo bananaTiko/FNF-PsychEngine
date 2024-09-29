@@ -1695,19 +1695,25 @@ class PlayState extends MusicBeatState
 				Conductor.songPosition = -Conductor.crochet * 5 + Conductor.offset;
 		}
 		else if (!paused && updateTime)
-		{
-			var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.data.noteOffset);
-			songPercent = (curTime / songLength);
+			{
+				var curTime:Float = Math.max(0, Conductor.songPosition - ClientPrefs.data.noteOffset);
+				songPercent = (curTime / songLength);
 
-			var songCalc:Float = (songLength - curTime);
-			if(ClientPrefs.data.timeBarType == 'Time Elapsed') songCalc = curTime;
+				var songCalc:Float = (songLength - curTime) / playbackRate; // time fix
 
-			var secondsTotal:Int = Math.floor(songCalc / 1000);
-			if(secondsTotal < 0) secondsTotal = 0;
+				if (ClientPrefs.data.timeBarType == 'Time Elapsed') songCalc = curTime; // amount of time passed is ok
 
-			if(ClientPrefs.data.timeBarType != 'Song Name')
-				timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
-		}
+				var secondsTotal:Int = Math.floor(songCalc / 1000);
+				if(secondsTotal < 0) secondsTotal = 0;
+
+				if(ClientPrefs.data.timeBarType != 'Song Name')
+					timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
+				else { // this is what was fucked up, hopefully this fixes it.
+					var secondsTotal:Int = Math.floor(songCalc/1000);
+					if(secondsTotal < 0) secondsTotal = 0;
+					timeTxt.text = FlxStringUtil.formatTime(secondsTotal,false);
+				}
+			}
 
 		if (camZooming)
 		{
@@ -2244,6 +2250,35 @@ class PlayState extends MusicBeatState
 			case 'Play Sound':
 				if(flValue2 == null) flValue2 = 1;
 				FlxG.sound.play(Paths.sound(value1), flValue2);
+				case 'SetCameraBop': //P-slice event notes
+				var val1 = Std.parseFloat(value1);
+				var val2 = Std.parseFloat(value2);
+				camZoomingMult = !Math.isNaN(val2) ? val2 : 1;
+				camZoomingFrequency = !Math.isNaN(val1) ? val1 : 4;
+			case 'ZoomCamera': //defaultCamZoom
+				var keyValues = value1.split(",");
+				if(keyValues.length != 2) {
+					trace("INVALID EVENT VALUE");
+					return;
+				}
+				var floaties = keyValues.map(s -> Std.parseFloat(s));
+				if(funkin.ArrayTools.findIndex(floaties,s -> Math.isNaN(s)) != -1) {
+					trace("INVALID FLOATIES");
+					return;
+				}
+				var easeFunc = LuaUtils.getTweenEaseByString(value2);
+				if(zoomTween != null) zoomTween.cancel();
+				var targetZoom = floaties[1]*defaultStageZoom;
+				zoomTween = FlxTween.tween(this,{ defaultCamZoom:targetZoom},(Conductor.stepCrochet/1000)*floaties[0],{
+					onStart: (x) ->{
+						camZoomingDecay = 5;
+					},
+					ease: easeFunc,
+					onComplete: (x) ->{
+						camZoomingDecay = 1;
+						zoomTween = null;
+					}
+				});
 		}
 
 		stagesFunc(function(stage:BaseStage) stage.eventCalled(eventName, value1, value2, flValue1, flValue2, strumTime));

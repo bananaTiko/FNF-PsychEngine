@@ -10,6 +10,8 @@ import llua.*;
 import llua.Lua;
 #end
 
+import hxwindowmode.WindowColorMode;
+
 #if ACHIEVEMENTS_ALLOWED
 import backend.Achievements;
 #end

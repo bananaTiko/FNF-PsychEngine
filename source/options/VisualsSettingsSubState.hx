@@ -121,6 +121,16 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
 		#end
+
+		#if desktop
+		var option:Option = new Option('Tile Bar Color',
+			"What Tile Bar color do you prefer?'",
+			'WindowBar',
+			STRING,
+			['Light', 'Dark',]);
+		addOption(option);
+		option.onChange = onChangeWindowBar;
+		#end
 		
 		var option:Option = new Option('Pause Music:',
 			"What song do you prefer for the Pause Screen?",
@@ -182,6 +192,18 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.data.pauseMusic)));
 
 		changedMusic = true;
+	}
+	
+	var changedWindowBar:Bool = false;
+	function onChangeWindowBar()
+		if(ClientPrefs.data.WindowBar == 'Light')
+			WindowColorMode.setLightMode();
+			WindowColorMode.redrawWindowHeader();
+		else if(ClientPrefs.data.WindowBar == 'Dark')
+			WindowColorMode.setDarkMode();
+			WindowColorMode.redrawWindowHeader();
+
+		changedWindowBar = true;
 	}
 
 	function onChangeNoteSkin()

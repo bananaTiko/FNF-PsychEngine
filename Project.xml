@@ -107,6 +107,9 @@
 		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
 		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
 	</section>
+	<haxelib name="hxWindowColorMode" if="desktop"/>
+
+	
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
