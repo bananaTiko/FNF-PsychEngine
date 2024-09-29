@@ -52,6 +52,10 @@ import psychlua.HScript;
 import crowplexus.iris.Iris;
 #end
 
+#if windows
+import hxwindowmode.WindowColorMode;
+#end
+
 /**
  * This is where all the Gameplay stuff happens and is managed
  *
