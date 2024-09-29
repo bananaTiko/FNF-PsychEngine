@@ -4,6 +4,10 @@ import objects.Note;
 import objects.StrumNote;
 import objects.Alphabet;
 
+#if windows
+import hxwindowmode.WindowColorMode;
+#end
+
 class VisualsSettingsSubState extends BaseOptionsMenu
 {
 	var noteOptionID:Int = -1;
