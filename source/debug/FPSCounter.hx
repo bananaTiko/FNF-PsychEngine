@@ -5,6 +5,12 @@ import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.system.System;
 
+#if flash
+import openfl.Lib;
+#end
+
+
+
 /**
 	The FPS class provides an easy-to-use monitor to display
 	the current frame rate of an OpenFL project
