@@ -8,6 +8,10 @@ import backend.Discord;
 #if LUA_ALLOWED
 import llua.*;
 import llua.Lua;
+import hxlua.*;
+import hxlua.Lua;
+import hxlua.LuaL;
+import cpp.*;
 #end
 
 #if windows
@@ -51,10 +55,11 @@ import flxanimate.*;
 import flxanimate.PsychFlxAnimate as FlxAnimate;
 #end
 
+//Flixel sound shit
 import backend.Sound.FlxFunkSound;
-import backend.Sound.FlxFunkSoundGroup
+import backend.Sound.FlxFunkSoundGroup;
+
 //Flixel
-import flixel.sound.FlxSound;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
