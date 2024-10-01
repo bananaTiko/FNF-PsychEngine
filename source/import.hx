@@ -8,10 +8,6 @@ import backend.Discord;
 #if LUA_ALLOWED
 import llua.*;
 import llua.Lua;
-import hxlua.*;
-import hxlua.Lua;
-import hxlua.LuaL;
-import cpp.*;
 #end
 
 #if windows
