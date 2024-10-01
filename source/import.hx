@@ -51,8 +51,8 @@ import flxanimate.*;
 import flxanimate.PsychFlxAnimate as FlxAnimate;
 #end
 
-import backend.sound.FlxFunkSound;
-import backend.sound.FlxFunkSoundGroup
+import backend.Sound.FlxFunkSound;
+import backend.Sound.FlxFunkSoundGroup
 //Flixel
 import flixel.sound.FlxSound;
 import flixel.FlxG;
