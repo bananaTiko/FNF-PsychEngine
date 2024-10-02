@@ -15,7 +15,7 @@ import openfl.media.Sound;
 @:access(lime.media.AudioSource)
 @:access(openfl.media.SoundMixer)
 @:access(openfl.media.Sound)
-class FlxFunkSound extends FlxBasic
+class FlxFunkSound extends FlxSound
 {
     @:noCompletion
     public var sound(default, set):Sound;
