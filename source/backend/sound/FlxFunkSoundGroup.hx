@@ -1,8 +1,10 @@
 package backend.sound;
 
 import openfl.events.Event;
+import flixel.sound.FlxSoundGroup;
 
 @:access(backend.sound.FlxFunkSound)
+@:access(flixel.sound.FlxSoundGroup)
 class FlxFunkSoundGroup<T:FlxFunkSound> extends FlxSoundGroup
 {
     public static var group:FlxFunkSoundGroup<FlxFunkSound>;
