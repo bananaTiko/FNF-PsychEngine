@@ -5,6 +5,10 @@ import openfl.media.SoundMixer;
 import lime.media.AudioSource;
 import openfl.media.SoundTransform;
 import openfl.media.Sound;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.math.FlxMath;
+import flixel.sound.FlxSound;
+import flixel.system.FlxAssets.FlxSoundAsset;
 
 /*
  * Copy of FlxSound with some changes
@@ -15,6 +19,8 @@ import openfl.media.Sound;
 @:access(lime.media.AudioSource)
 @:access(openfl.media.SoundMixer)
 @:access(openfl.media.Sound)
+@:access(flixel.sound.FlxSound)
+@:access(flixel.system.FlxAssets.FlxSoundAsset)
 class FlxFunkSound extends FlxSound
 {
     @:noCompletion
