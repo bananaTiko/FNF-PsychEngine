@@ -157,23 +157,27 @@ class GameOverSubstate extends MusicBeatSubstate
 				endBullshit();
 			}
 			else if (controls.BACK)
-			{
-				#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
-				FlxG.camera.visible = false;
-				FlxG.sound.music.stop();
-				PlayState.deathCounter = 0;
-				PlayState.seenCutscene = false;
-				PlayState.chartingMode = false;
-	
-				Mods.loadTopMod();
+				{
+					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
+					FlxG.camera.visible = false;
+					FlxG.sound.music.stop();
+					PlayState.deathCounter = 0;
+					PlayState.seenCutscene = false;
+					PlayState.chartingMode = false;
+		
+					//! not yet
+				//Mods.loadTopMod();
 				if (PlayState.isStoryMode)
-					MusicBeatState.switchState(new StoryMenuState());
-				else
-					MusicBeatState.switchState(new FreeplayState());
-	
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
-				PlayState.instance.callOnScripts('onGameOverConfirm', [false]);
-			}
+					{
+						PlayState.storyPlaylist = [];
+						openSubState(new StickerSubState(null, (sticker) -> new StoryMenuState(sticker)));
+					}
+					else
+					{
+						openSubState(new StickerSubState(null, (sticker) -> states.freeplay.FreeplayState.build(null, sticker)));
+					}
+					PlayState.instance.callOnScripts('onGameOverConfirm', [false]);
+				}
 			else if (justPlayedLoop)
 			{
 				switch(PlayState.SONG.stage)

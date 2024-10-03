@@ -1,0 +1,40 @@
+{
+  "name": "stickers-set-1",
+  "artist": "PhantomArcade3K",
+  "stickers": {
+    "bf": ["bfSticker1", "bfSticker2", "bfSticker3", "bfStickerP"],
+    "dad": ["dadSticker1", "dadSticker2", "dadSticker3"],
+    "pico": ["picoSticker1", "picoSticker2", "picoSticker3", "picoStickerP"],
+    "mom": ["momSticker1", "momSticker2", "momSticker3"],
+    "monster": ["monsterSticker1", "monsterSticker2", "monsterSticker3"],
+    "gf": ["gfSticker1", "gfSticker2", "gfSticker3", "gfStickerP"],
+    "rainbow": ["RainbowFlag"],
+    "poly": ["PolyFlag"],
+    "trans": ["TransFlag"],
+    "asexual": ["AsexualPrideFlag"],
+    "nonbinary": ["NonBinaryFlag"],
+    "agender": ["AgenderFlag"],
+    "bisexual": ["BisexualFlag"],
+    "genderfluid": ["GenderfluidFlag"],
+    "demisexual": ["DemisexualFlag"],
+    "intersex": ["IntersexFlag"],
+    "abrosexual": ["AbrosexualFlag"],
+    "aromantic": ["AromanticFlag"],
+    "bigender": ["BigenderFlag"],
+    "demiboy": ["DemiboyPrideFlag"],
+    "demigirl": ["DemigirlFlag"],
+    "fictoqueer": ["FictoqueerFlag"],
+    "gaymale": ["GayMaleFlag"],
+    "lesbian": ["LesbianFlag"],
+    "polysexuality": ["PolysexualityFlag"],
+    "pansexual": ["PansexualFlag"],
+    "omnisexuality": ["OmnisexualityFlag"]
+  },
+  "stickerPacks": {
+    "bf-gf": ["bf", "gf"],
+    "parents": ["dad", "mom"],
+    "flagsW1": ["rainbow", "poly", "trans", "asexual", "nonbinary", "agender","bisexual","genderfluid","demisexual","intersex"],
+    "flagsW2": ["abrosexual", "aromantic", "bigender", "demiboy", "demigirl", "fictoqueer","bisexual","gaymale","lesbian","polysexuality","pansexual","omnisexuality"],
+    "all": ["bf", "gf", "dad", "mom", "monster", "pico", "rainbow", "poly", "trans", "asexual", "nonbinary", "agender","bisexual","genderfluid","demisexual","intersex","abrosexual", "aromantic", "bigender", "demiboy", "demigirl", "fictoqueer","bisexual","gaymale","lesbian","polysexuality","pansexual","omnisexuality"]
+  }
+}
