@@ -317,26 +317,28 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.sound.music.time = pauseMusic.time;
 					}
 					OptionsState.onPlayState = true;
-				case "Exit to menu":
 					#if DISCORD_ALLOWED DiscordClient.resetClientID(); #end
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
 
 					PlayState.instance.canResync = false;
-					Mods.loadTopMod();
-					if(PlayState.isStoryMode)
-						MusicBeatState.switchState(new StoryMenuState());
-					else 
-						MusicBeatState.switchState(new FreeplayState());
-
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					//! not yet
+					//Mods.loadTopMod();
+					if (PlayState.isStoryMode)
+						{
+							PlayState.storyPlaylist = [];
+							openSubState(new StickerSubState(null, (sticker) -> new StoryMenuState(sticker)));
+						}
+						else
+						{
+							openSubState(new StickerSubState(null, (sticker) -> states.freeplay.FreeplayState.build(null, sticker)));
+						}
 					PlayState.changedDifficulty = false;
 					PlayState.chartingMode = false;
 					FlxG.camera.followLerp = 0;
 			}
 		}
 	}
-
 	function deleteSkipTimeText()
 	{
 		if(skipTimeText != null)
