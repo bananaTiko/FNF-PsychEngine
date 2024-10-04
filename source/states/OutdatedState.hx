@@ -31,34 +31,36 @@ class OutdatedState extends MusicBeatState
 	}
 
 	function update(elapsed:Float)
-		{
-			if(!leftState) {
-				if (FlxG.keys.justPressed.ENTER) {
-					leftState = true;
-					#if windows FlxG.switchState(states.UpdateState.new);
-					#else
-					CoolUtil.browserLoad("https://github.com/bananaTiko/FNF-PsychEngine/releases/latest");
-					#end
-				}
-				if (FlxG.keys.justPressed.SPACE) {
-					CoolUtil.browserLoad("https://github.com/bananaTiko/FNF-PsychEngine/releases/latest");
-				}
-				else if(controls.BACK) {
-					leftState = true;
-				}
-	
-			if(leftState)
-			{
+	{
+		if(!leftState) {
+			if (FlxG.keys.justPressed.ENTER) {
+				leftState = true;
+				#if windows FlxG.switchState(UpdateState.new);
+				#else
+				CoolUtil.browserLoad("hhttps://github.com/bananaTiko/FNF-PsychEngine/releases/");
+				#end
+			}
+			if (FlxG.keys.justPressed.SPACE) {
+				CoolUtil.browserLoad("https://github.com/bananaTiko/FNF-PsychEngine/releases/latest");
+			}
+			else if(controls.BACK) {
+				leftState = true;
+			}
+
+	            if(leftState) {
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxTween.tween(warnText, {alpha: 0}, 1, {
 					onComplete: function (twn:FlxTween) {
-						MusicBeatState.switchState(new MainMenuState());
+						FlxG.switchState(MainMenuState.new);
+					}
+				});
+				FlxTween.tween(updateText, {alpha: 0}, 1, {
+					onComplete: function (twn:FlxTween) {
+						FlxG.switchState(MainMenuState.new);
 					}
 				});
 			}
 		}
-			super.update(elapsed);
-		}
-	   }
-      }
+		super.update(elapsed);
+	}
 }
