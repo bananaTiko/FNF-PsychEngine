@@ -48,6 +48,7 @@ import states.TitleState;
 	public var healthBarAlpha:Float = 1;
 	public var hitsoundVolume:Float = 0;
 	public var pauseMusic:String = 'Tea Time';
+	public var daMenuMusic:String = 'Default';
 	public var checkForUpdates:Bool = true;
 	public var comboStacking:Bool = true;
 	public var gameplaySettings:Map<String, Dynamic> = [
@@ -187,6 +188,10 @@ class ClientPrefs {
 
 		#if (!html5 && !switch)
 		FlxG.autoPause = ClientPrefs.data.autoPause;
+
+		if(FlxG.save.data.daMenuMusic != null) {
+			daMenuMusic = ClientPrefs.data.daMenuMusic;
+		}
 
 		if(FlxG.save.data.framerate == null) {
 			final refreshRate:Int = FlxG.stage.application.window.displayMode.refreshRate;

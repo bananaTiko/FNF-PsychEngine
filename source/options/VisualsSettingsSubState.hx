@@ -143,6 +143,14 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			['None', 'Tea Time', 'Breakfast', 'Breakfast (Pico)']);
 		addOption(option);
 		option.onChange = onChangePauseMusic;
+
+		var option:Option = new Option('Menu Song:',
+			"What song do you prefer for the Menus?",
+			'daMenuMusic',
+			STRING,
+			['Default', 'VS Impostor', 'VS Nonsense V2']);
+		addOption(option);
+		option.onChange = onChangeMenuMusic;
 		
 		#if CHECK_FOR_UPDATES
 		var option:Option = new Option('Check for Updates',
@@ -237,9 +245,17 @@ function onChangeWindowBar() {
 		note.playAnim('static');
 	}
 
+var menuMusicChanged:Bool = false;
+	function onChangeMenuMusic()
+	{
+			if (ClientPrefs.daMenuMusic != 'Default') FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic));
+			if (ClientPrefs.daMenuMusic == 'Default') FlxG.sound.playMusic(Paths.music('freakyMenu'));
+		menuMusicChanged = true;
+	}
+
 	override function destroy()
 	{
-		if(changedMusic && !OptionsState.onPlayState) FlxG.sound.playMusic(Paths.music('freakyMenu'), 1, true);
+		if(changedMusic && !OptionsState.onPlayState) FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 1, true);
 		super.destroy();
 	}
 

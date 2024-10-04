@@ -12,30 +12,41 @@ class OutdatedState extends MusicBeatState
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
 
-		warnText = new FlxText(0, 0, FlxG.width,
-			"Sup bro, looks like you're running an   \n
-			outdated version of Psych Engine (" + MainMenuState.psychEngineVersion + "),\n
-			please update to " + TitleState.updateVersion + "!\n
-			Press ESCAPE to proceed anyway.\n
-			\n
-			Thank you for using the Engine!",
-			32);
-		warnText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER);
-		warnText.screenCenter(Y);
+		warnText = new FlxText(0, 10, FlxG.width,
+			"HEY! Your Version of Untitled Psych Fork is outdated!\n"
+			+ 'v' + MainMenuState.untiledpsychForkVersion + ' < v' + TitleState.updateVersion + '\n'
+			,32);
+		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		warnText.screenCenter(X);
 		add(warnText);
+
+		updateText = new FlxText(0, 10, FlxG.width,
+			"Press ENTER to update or ESCAPE to ignore this!"
+			,24);
+		updateText.setFormat("VCR OSD Mono", 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			updateText.y = 710 - updateText.height;
+			updateText.x = 10;
+		add(updateText);
+	}
 	}
 
 	override function update(elapsed:Float)
-	{
-		if(!leftState) {
-			if (controls.ACCEPT) {
-				leftState = true;
-				CoolUtil.browserLoad("https://github.com/ShadowMario/FNF-PsychEngine/releases");
-			}
-			else if(controls.BACK) {
-				leftState = true;
-			}
-
+		{
+			if(!leftState) {
+				if (FlxG.keys.justPressed.ENTER) {
+					leftState = true;
+					#if windows FlxG.switchState(states.UpdateState.new);
+					#else
+					CoolUtil.browserLoad("https://github.com/bananaTiko/FNF-PsychEngine/releases/latest");
+					#end
+				}
+				if (FlxG.keys.justPressed.SPACE) {
+					CoolUtil.browserLoad("https://github.com/bananaTiko/FNF-PsychEngine/releases/latest");
+				}
+				else if(controls.BACK) {
+					leftState = true;
+				}
+	
 			if(leftState)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -46,6 +57,7 @@ class OutdatedState extends MusicBeatState
 				});
 			}
 		}
-		super.update(elapsed);
+			super.update(elapsed);
+		}
 	}
 }

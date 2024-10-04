@@ -83,19 +83,30 @@ class TitleState extends MusicBeatState
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
-		#if CHECK_FOR_UPDATES
-		if(ClientPrefs.data.checkForUpdates && !closedState) {
+		#if (CHECK_FOR_UPDATES)
+		if(ClientPrefs.checkForUpdates && !closedState && !Main.askedToUpdate) {
 			trace('checking for update');
-			var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
+			var http = new haxe.Http("https://raw.githubusercontent.com/bananaTiko/FNF-PsychEngine/experimental/gitVersion.txt");
+			var returnedData:Array<String> = [];
 
 			http.onData = function (data:String)
 			{
-				updateVersion = data.split('\n')[0].trim();
-				var curVersion:String = MainMenuState.psychEngineVersion.trim();
+					var versionEndIndex:Int = data.indexOf(';');
+					returnedData[0] = data.substring(0, versionEndIndex);
+
+    				// Extract the changelog after the version number
+					returnedData[1] = data.substring(versionEndIndex + 1, data.length);
+				updateVersion = returnedData[0];
+				var curVersion:String = MainMenuState.untitledpsychForkVersion.trim();
 				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
 				if(updateVersion != curVersion) {
 					trace('versions arent matching!');
+					OutdatedState.currChanges = returnedData[1];
 					mustUpdate = true;
+					Main.askedToUpdate = true;
+				}
+				if(updateVersion == curVersion) {
+					trace('the versions match!');
 				}
 			}
 
@@ -152,11 +163,21 @@ class TitleState extends MusicBeatState
 	{
 		persistentUpdate = true;
 		if (!initialized && FlxG.sound.music == null)
-			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+			FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 0);
+	}
+}
 
 		loadJsonData();
 		#if TITLE_SCREEN_EASTER_EGG easterEggData(); #end
-		Conductor.bpm = musicBPM;
+		switch(ClientPrefs.data.daMenuMusic) // change this if you're making a source mod, like add your own or something
+		{
+			case 'VS Impostor' | 'VS Nonsense V2': 
+				Conductor.changeBPM(102);
+			case 'Default': // just in case you're not making a source mod & wanna change this
+			Conductor.bpm = musicBPM;
+			default: // fallback
+			Conductor.bpm = musicBPM;
+		}
 
 		logoBl = new FlxSprite(logoPosition.x, logoPosition.y);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
@@ -225,12 +246,29 @@ class TitleState extends MusicBeatState
 		credTextShit.screenCenter();
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52);
+
+		if (FlxG.random.bool(1))
+		{
+			ngSpr.loadGraphic(Paths.image('newgrounds_logo_classic'));
+		}
+		else if (FlxG.random.bool(30))
+		{
+			ngSpr.loadGraphic(Paths.image('newgrounds_logo_animated'), true, 600);
+			ngSpr.animation.add('idle', [0, 1], 4);
+			ngSpr.animation.play('idle');
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.55));
+			ngSpr.y += 25;
+		}
+		else
+		{
+			ngSpr.loadGraphic(Paths.image('newgrounds_logo'));
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		}
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = ClientPrefs.data.antialiasing;
+		ngSpr.visible = false;
 
 		add(gfDance);
 		add(logoBl); //FNF Logo
@@ -356,81 +394,95 @@ class TitleState extends MusicBeatState
 	var titleTimer:Float = 0;
 
 	override function update(elapsed:Float)
-	{
-		if (FlxG.sound.music != null)
-			Conductor.songPosition = FlxG.sound.music.time;
-		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
-
-		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
-
-		#if mobile
-		for (touch in FlxG.touches.list)
 		{
-			if (touch.justPressed)
+			if (!cheatActive && skippedIntro)
+				cheatCodeShit();
+	
+			if (FlxG.sound.music != null)
+				Conductor.songPosition = FlxG.sound.music.time;
+			// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
+	
+			var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
+	
+			#if mobile
+			for (touch in FlxG.touches.list)
 			{
-				pressedEnter = true;
+				if (touch.justPressed)
+				{
+					pressedEnter = true;
+				}
 			}
-		}
-		#end
-
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.START)
-				pressedEnter = true;
-
-			#if switch
-			if (gamepad.justPressed.B)
-				pressedEnter = true;
 			#end
-		}
-		
-		if (newTitle) {
-			titleTimer += FlxMath.bound(elapsed, 0, 1);
-			if (titleTimer > 2) titleTimer -= 2;
-		}
+	
+			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+	
+			if (gamepad != null)
+			{
+				if (gamepad.justPressed.START)
+					pressedEnter = true;
+	
+				#if switch
+				if (gamepad.justPressed.B)
+					pressedEnter = true;
+				#end
+			}
+	
+			if(enterTimer != null && pressedEnter){
+				enterTimer.cancel();
+				enterTimer.onComplete(enterTimer);
+				enterTimer = null;
+			}
+	
+			if (newTitle)
+			{
+				titleTimer += FlxMath.bound(elapsed, 0, 1);
+				if (titleTimer > 2)
+					titleTimer -= 2;
+			}
 
 		// EASTER EGG
-
 		if (initialized && !transitioning && skippedIntro)
-		{
-			if (newTitle && !pressedEnter)
 			{
-				var timer:Float = titleTimer;
-				if (timer >= 1)
-					timer = (-timer) + 2;
-				
-				timer = FlxEase.quadInOut(timer);
-				
-				titleText.color = FlxColor.interpolate(titleTextColors[0], titleTextColors[1], timer);
-				titleText.alpha = FlxMath.lerp(titleTextAlphas[0], titleTextAlphas[1], timer);
-			}
-			
-			if(pressedEnter)
-			{
-				titleText.color = FlxColor.WHITE;
-				titleText.alpha = 1;
-				
-				if(titleText != null) titleText.animation.play('press');
-
-				FlxG.camera.flash(ClientPrefs.data.flashing ? FlxColor.WHITE : 0x4CFFFFFF, 1);
-				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
-
-				transitioning = true;
-				// FlxG.sound.music.stop();
-
-				new FlxTimer().start(1, function(tmr:FlxTimer)
+				if (newTitle && !pressedEnter)
 				{
-					if (mustUpdate)
-						MusicBeatState.switchState(new OutdatedState());
-					else
-						MusicBeatState.switchState(new MainMenuState());
-
-					closedState = true;
-				});
-				// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
-			}
+					var timer:Float = titleTimer;
+					if (timer >= 1)
+						timer = (-timer) + 2;
+					timer = FlxEase.quadInOut(timer);
+					titleText.color = FlxColor.interpolate(titleTextColors[0], titleTextColors[1], timer);
+					titleText.alpha = FlxMath.lerp(titleTextAlphas[0], titleTextAlphas[1], timer);
+				}
+				if (pressedEnter)
+				{
+					titleText.color = FlxColor.WHITE;
+					titleText.alpha = 1
+					if (titleText != null)
+						titleText.animation.play('press');
+					FlxG.camera.flash(ClientPrefs.data.flashing ? FlxColor.WHITE : 0x4CFFFFFF, 1);
+					FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+					transitioning = true;
+					// FlxG.sound.music.stop();
+	
+					enterTimer = new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						if (mustUpdate)
+						{
+							MusicBeatState.switchState(new OutdatedState());
+						}
+						else
+						{
+							if (cheatActive)
+							{
+								FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 0);
+								FlxG.sound.music.fadeIn(4, 0, 0.7);
+							}
+							FlxTransitionableState.skipNextTransIn = true;
+							MusicBeatState.switchState(new MainMenuState());
+						}
+						closedState = true;
+					});
+					// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
+				}
 			#if TITLE_SCREEN_EASTER_EGG
 			else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 			{
@@ -537,67 +589,65 @@ class TitleState extends MusicBeatState
 	private var sickBeats:Int = 0; //Basically curBeat but won't be skipped if you hold the tab or resize the screen
 	public static var closedState:Bool = false;
 	override function beatHit()
-	{
-		super.beatHit();
-
-		if(logoBl != null)
-			logoBl.animation.play('bump', true);
-
-		if(gfDance != null)
 		{
-			danceLeft = !danceLeft;
-			if(!useIdle)
+			super.beatHit();
+	
+			if (logoBl != null)
+				logoBl.animation.play('bump', true);
+	
+			if (gfDance != null)
 			{
+				danceLeft = !danceLeft;
 				if (danceLeft)
 					gfDance.animation.play('danceRight');
 				else
 					gfDance.animation.play('danceLeft');
 			}
-			else if(curBeat % 2 == 0) gfDance.animation.play('idle', true);
-		}
+	
+			if (cheatActive && this.curBeat % 2 == 0 && swagShader != null)
+				swagShader.hue += 0.125;
 
-		if(!closedState)
-		{
-			sickBeats++;
-			switch (sickBeats)
+		if (!closedState)
 			{
-				case 1:
-					//FlxG.sound.music.stop();
-					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-					FlxG.sound.music.fadeIn(4, 0, 0.7);
-				case 2:
-					createCoolText(['Psych Engine by'], 40);
-				case 4:
-					addMoreText('Shadow Mario', 40);
-					addMoreText('Riveren', 40);
-				case 5:
-					deleteCoolText();
-				case 6:
-					createCoolText(['Not associated', 'with'], -40);
-				case 8:
-					addMoreText('newgrounds', -40);
-					ngSpr.visible = true;
-				case 9:
-					deleteCoolText();
-					ngSpr.visible = false;
-				case 10:
-					createCoolText([curWacky[0]]);
-				case 12:
-					addMoreText(curWacky[1]);
-				case 13:
-					deleteCoolText();
-				case 14:
-					addMoreText('Friday');
-				case 15:
-					addMoreText('Night');
-				case 16:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
-
-				case 17:
-					skipIntro();
+				sickBeats++;
+				switch (sickBeats)
+				{
+					case 1:
+						// FlxG.sound.music.stop();
+						FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 0);
+						FlxG.sound.music.fadeIn(4, 0, 0.7);
+					case 2:
+						createCoolText(['Funkin Crew Inc', 'Shadow Mario', 'BananaTiko2']);
+					case 4:
+						addMoreText('present');
+					case 5:
+						deleteCoolText();
+					case 6:
+						createCoolText(['Not associated', 'with'], -40);
+					case 8:
+						addMoreText('newgrounds', -40);
+						ngSpr.visible = true;
+					case 9:
+						deleteCoolText();
+						ngSpr.visible = false;
+					case 10:
+						createCoolText([curWacky[0]]);
+					case 12:
+						addMoreText(curWacky[1]);
+					case 13:
+						deleteCoolText();
+					case 14:
+						addMoreText('Friday');
+					case 15:
+						addMoreText('Night');
+					case 16:
+						addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+	
+					case 17:
+						skipIntro();
+				}
 			}
 		}
-	}
 
 	var skippedIntro:Bool = false;
 	var increaseVolume:Bool = false;
@@ -631,7 +681,7 @@ class TitleState extends MusicBeatState
 						FlxG.camera.flash(FlxColor.WHITE, 2);
 						skippedIntro = true;
 
-						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+						FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 0);
 						FlxG.sound.music.fadeIn(4, 0, 0.7);
 						return;
 				}
@@ -653,7 +703,7 @@ class TitleState extends MusicBeatState
 					remove(credGroup);
 					FlxG.camera.flash(FlxColor.WHITE, 3);
 					sound.onComplete = function() {
-						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+						FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 0);
 						FlxG.sound.music.fadeIn(4, 0, 0.7);
 						transitioning = false;
 						if(easteregg == 'PESSY')
@@ -684,4 +734,53 @@ class TitleState extends MusicBeatState
 			skippedIntro = true;
 		}
 	}
+}
+
+// Cheat code shit
+var cheatArray:Array<Int> = [0x0001, 0x0010, 0x0001, 0x0010, 0x0100, 0x1000, 0x0100, 0x1000];
+var curCheatPos:Int = 0;
+var cheatActive:Bool = false;
+
+function cheatCodeShit():Void
+{
+	if (FlxG.keys.justPressed.ANY)
+	{
+		if (controls.NOTE_DOWN_P || controls.UI_DOWN_P)
+			codePress(FlxDirectionFlags.DOWN);
+		if (controls.NOTE_UP_P || controls.UI_UP_P)
+			codePress(FlxDirectionFlags.UP);
+		if (controls.NOTE_LEFT_P || controls.UI_LEFT_P)
+			codePress(FlxDirectionFlags.LEFT);
+		if (controls.NOTE_RIGHT_P || controls.UI_RIGHT_P)
+			codePress(FlxDirectionFlags.RIGHT);
+	}
+}
+
+function codePress(input:Int)
+{
+	if (input == cheatArray[curCheatPos])
+	{
+		curCheatPos += 1;
+		if (curCheatPos >= cheatArray.length)
+			startCheat();
+	}
+	else
+		curCheatPos = 0;
+
+	trace(input);
+}
+
+function startCheat():Void
+{
+	cheatActive = true;
+
+	// var spec:SpectogramSprite = new SpectogramSprite(FlxG.sound.music);
+
+	FlxG.sound.playMusic(Paths.music('girlfriendsRingtone'), 0);
+	Conductor.bpm = 160; // GF's ringnote has different BPM
+
+	FlxG.sound.music.fadeIn(4.0, 0.0, 1.0);
+
+	FlxG.camera.flash(FlxColor.WHITE, 1);
+	FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 }
