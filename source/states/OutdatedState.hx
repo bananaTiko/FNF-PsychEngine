@@ -30,7 +30,7 @@ class OutdatedState extends MusicBeatState
 	}
 	}
 
-	override function update(elapsed:Float)
+	function update(elapsed:Float)
 		{
 			if(!leftState) {
 				if (FlxG.keys.justPressed.ENTER) {
