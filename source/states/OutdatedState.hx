@@ -59,5 +59,6 @@ class OutdatedState extends MusicBeatState
 		}
 			super.update(elapsed);
 		}
-	}
+	   }
+      }
 }
