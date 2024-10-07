@@ -589,6 +589,8 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 		{
 			super.beatHit();
+			
+			FlxG.camera.zoom += 0.015;
 	
 			if (logoBl != null)
 				logoBl.animation.play('bump', true);
