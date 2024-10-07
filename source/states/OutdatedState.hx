@@ -37,7 +37,7 @@ class OutdatedState extends MusicBeatState
 				leftState = true;
 				#if windows FlxG.switchState(UpdateState.new);
 				#else
-				CoolUtil.browserLoad("hhttps://github.com/bananaTiko/FNF-PsychEngine/releases/");
+				CoolUtil.browserLoad("https://github.com/bananaTiko/FNF-PsychEngine/releases/");
 				#end
 			}
 			if (FlxG.keys.justPressed.SPACE) {
@@ -47,7 +47,7 @@ class OutdatedState extends MusicBeatState
 				leftState = true;
 			}
 
-	            if(leftState) {
+                if(leftState) {
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				FlxTween.tween(warnText, {alpha: 0}, 1, {
 					onComplete: function (twn:FlxTween) {
@@ -63,4 +63,3 @@ class OutdatedState extends MusicBeatState
 		}
 		super.update(elapsed);
 	}
-}
