@@ -225,12 +225,29 @@ class TitleState extends MusicBeatState
 		credTextShit.screenCenter();
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
-		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52);
+
+		if (FlxG.random.bool(1))
+		{
+			ngSpr.loadGraphic(Paths.image('newgrounds_logo_classic'));
+		}
+		else if (FlxG.random.bool(30))
+		{
+			ngSpr.loadGraphic(Paths.image('newgrounds_logo_animated'), true, 600);
+			ngSpr.animation.add('idle', [0, 1], 4);
+			ngSpr.animation.play('idle');
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.55));
+			ngSpr.y += 25;
+		}
+		else
+		{
+			ngSpr.loadGraphic(Paths.image('newgrounds_logo'));
+			ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		}
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = ClientPrefs.data.antialiasing;
+		ngSpr.visible = false;
 
 		add(gfDance);
 		add(logoBl); //FNF Logo
@@ -539,6 +556,10 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
+
+		FlxG.camera.zoom += 0.015;
+
+        FlxTween.tween(FlxG.camera, {zoom: 1}, Conductor.crochet / 1200, {ease: FlxEase.quadOut});
 
 		if(logoBl != null)
 			logoBl.animation.play('bump', true);

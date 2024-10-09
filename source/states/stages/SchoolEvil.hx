@@ -1,6 +1,6 @@
 package states.stages;
 
-import flixel.addons.effects.FlxTrail;
+import stages.objects.objects.DeltaTrail;
 import states.stages.objects.*;
 import substates.GameOverSubstate;
 import cutscenes.DialogueBox;
@@ -40,8 +40,8 @@ class SchoolEvil extends BaseStage
 	}
 	override function createPost()
 	{
-		var trail:FlxTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-		addBehindDad(trail);
+		var evilTrail = new DeltaTrail(dad.getSprite(), null, 10, 3 / 60, 0.4);
+		addBehindDad(evilTrail);
 	}
 
 	// Ghouls event
