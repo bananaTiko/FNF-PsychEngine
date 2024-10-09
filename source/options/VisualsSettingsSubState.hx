@@ -248,8 +248,8 @@ function onChangeWindowBar() {
 	var menuMusicChanged:Bool = false;
 	function onChangeMenuMusic()
 	{
-			if (ClientPrefs.daMenuMusic != 'Default') FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic));
-			if (ClientPrefs.daMenuMusic == 'Default') FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			if (ClientPrefs.data.daMenuMusic != 'Default') FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.data.daMenuMusic));
+			if (ClientPrefs.data.daMenuMusic == 'Default') FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		menuMusicChanged = true;
 	}
 
