@@ -38,6 +38,9 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var defaultList:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			["Untitled Psych Fork Team"],
+			['bananaTiko',				'tiko',				"Creator and Programmer for Untitled Psych Fork",	'https://twitter.com/Banana_tiko_2',					'ffc127'],
+			[""],
 			["Psych Engine Team"],
 			["Shadow Mario",		"shadowmario",		"Main Programmer and Head of Psych Engine",					"https://ko-fi.com/shadowmario",	"444444"],
 			["Riveren",				"riveren",			"Main Artist/Animator of Psych Engine",						"https://x.com/riverennn",			"14967B"],
