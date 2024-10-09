@@ -42,6 +42,15 @@ import backend.Highscore;
 ')
 #end
 
+#if windows // Crisp Visuals and Allows you to move window when it's not responding
+@:functionCode("
+	#include <windows.h>
+	#include <winuser.h>
+	setProcessDPIAware()
+	DisableProcessWindowsGhosting()
+")
+#end
+
 class Main extends Sprite
 {
 	var game = {
@@ -124,7 +133,13 @@ class Main extends Sprite
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
-		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+		var gameObject = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
+		// FlxG.game._customSoundTray wants just the class, it calls new from
+    	// create() in there, which gets called when it's added to stage
+    	// which is why it needs to be added before addChild(game) here
+        @:privateAccess
+		gameObject._customSoundTray = backend.FunkinSoundTray;
+		addChild(gameObject);
 
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
