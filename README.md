@@ -20,12 +20,6 @@ same goes for *Lua Scripts*, comment out or delete the line with `LUA_ALLOWED`, 
 
 ### Special Thanks 
 * mikolka9144 - P Slice Programer
-* CottonTNG23 - Stickers
-* DoodleNutZ - Stickers
-* DaBigJ - Stickers
-* GoodieBag - Stickers
-* lilythepan32 - Stickers
-* IMLPIDimon - Stickers
 _____________________________________
 
 ## Psych Credits:
