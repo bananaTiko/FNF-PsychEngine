@@ -251,13 +251,13 @@ function onChangeWindowBar() {
 			if (ClientPrefs.data.daMenuMusic != 'Default') 
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			else 
-			FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic));
+			FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.data.daMenuMusic));
 		menuMusicChanged = true;
 	}
 
 	override function destroy()
 	{
-		if(changedMusic && !OptionsState.onPlayState) FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.daMenuMusic), 1, true);
+		if(changedMusic && !OptionsState.onPlayState) FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.data.daMenuMusic), 1, true);
 		super.destroy();
 	}
 
