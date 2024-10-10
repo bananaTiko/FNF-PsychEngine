@@ -4,7 +4,7 @@
 
 	<file="FNF-UPF" packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
 	<app title="Friday Night Funkin': Untitled Psych Fork" unless="debug" />
-	<app title="Friday Night Funkin': Untitled Psych Fork (debug)" if="debug" 
+	<app title="Friday Night Funkin': Untitled Psych Fork (debug)" if="debug"/> 
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -213,6 +213,7 @@
 	<icon path="art/icon416.png" size='416'/>
 	<icon path="art/icon512.png" size='512'/>
 	<icon path="art/icon900.png" size='900'/>
+	
 	<icon path="art/iconOG.png" unless='mac'/>
 
     <icon path="art/iconMac.png" if='mac' unless='debug' />

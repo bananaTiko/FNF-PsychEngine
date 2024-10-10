@@ -47,7 +47,7 @@ class MainMenuState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("Geting Freaky in the Main menus", null);
 		#end
 
 		persistentUpdate = persistentDraw = true;

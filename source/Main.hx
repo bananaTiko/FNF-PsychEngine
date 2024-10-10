@@ -117,6 +117,7 @@ class Main extends Sprite
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
+		var WindowBar:ClientPrefs.data.windowBar;
 
 		if (game.zoom == -1.0)
 		{
@@ -133,7 +134,6 @@ class Main extends Sprite
 		Mods.loadTopMod();
 
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
-
 		Highscore.load();
 
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
@@ -214,7 +214,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = "./crash/" + "PsychEngine_" + dateNow + ".txt";
+		path = "./crash/" + "UPF_Crashlog_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -234,7 +234,7 @@ class Main extends Sprite
 		*/
 		// 
 		#if officialBuild
-		errMsg += "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
+		errMsg += "\nPlease report this error to the GitHub page: https://github.com/bananaTiko/FNF-UntitledPsychFork\n\n> Crash Handler written by: sqirra-rng";
 		#end
 
 		if (!FileSystem.exists("./crash/"))

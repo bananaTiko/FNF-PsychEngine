@@ -21,7 +21,7 @@ class CreditsState extends MusicBeatState
 	{
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("looking at the credits", null);
 		#end
 
 		persistentUpdate = true;
@@ -40,6 +40,7 @@ class CreditsState extends MusicBeatState
 		var defaultList:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			["Untitled Psych Fork Team"],
 			['bananaTiko',				'tiko',				"Creator and Programmer for Untitled Psych Fork",	'https://twitter.com/Banana_tiko_2',					'ffc127'],
+			['TheZoroForce240',             'zoro',             'Special Modcharting System',                       		'https://github.com/TheZoroForce240',          'FFD900'],
 			[""],
 			["Psych Engine Team"],
 			["Shadow Mario",		"shadowmario",		"Main Programmer and Head of Psych Engine",					"https://ko-fi.com/shadowmario",	"444444"],
@@ -48,7 +49,7 @@ class CreditsState extends MusicBeatState
 			["Former Engine Members"],
 			["bb-panzu",			"bb",				"Ex-Programmer of Psych Engine",							"https://x.com/bbsub3",				"3E813A"],
 			[""],
-			["Engine Contributors"],
+			["Psych Engine Contributors"],
 			["crowplexus",			"crowplexus",		"HScript Iris, Input System v3, and Other PRs",				"https://github.com/crowplexus",	"CFCFCF"],
 			["Kamizeta",			"kamizeta",			"Creator of Pessy, Psych Engine's mascot.",				"https://www.instagram.com/cewweey/",	"D21C11"],
 			["MaxNeton",			"maxneton",			"Loading Screen Easter Egg Artist/Animator.",	"https://bsky.app/profile/maxneton.bsky.social","3C2E4E"],

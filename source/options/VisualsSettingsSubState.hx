@@ -127,8 +127,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		#end
 
 		#if windows
-		var option:Option = new Option('Tile Bar Color',
-			"What Tile Bar color do you prefer?'",
+		var option:Option = new Option('Title Bar Color',
+			"What Title Bar color do you prefer?'",
 			'windowBar',
 			STRING,
 			['Light', 'Dark']);
