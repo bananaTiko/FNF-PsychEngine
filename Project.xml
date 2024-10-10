@@ -1,158 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<!-- _________________________ Application Settings _________________________ -->
+    <!-- _________________________ Application Settings _________________________ -->
 
-	<file="FNF-UPF" packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
-	<app title="Friday Night Funkin': Untitled Psych Fork" unless="debug" />
-	<app title="Friday Night Funkin': Untitled Psych Fork (debug)" if="debug"/> 
+    <file name="FNF-UPF" packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
+    <app title="Friday Night Funkin': Untitled Psych Fork" unless="debug" />
+    <app title="Friday Night Funkin': Untitled Psych Fork (debug)" if="debug"/> 
 
-	<!--Switch Export with Unique ApplicationID and Icon-->
-	<set name="APP_ID" value="0x0100f6c013bbc000" />
+    <!-- Switch Export with Unique ApplicationID and Icon -->
+    <set name="APP_ID" value="0x0100f6c013bbc000" />
 
-	<!-- NOTE TO SELF: DISABLE THIS IF ISSUES ARE FOUND -->
-	<haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/> <!-- stable luas PUT AFTER FIRST LINE WITH APP NAME AND ETC -->
+    <!-- NOTE TO SELF: DISABLE THIS IF ISSUES ARE FOUND -->
+    <haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/>
 
-	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
-		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
-	<!-- <app preloader="Preloader" resizable="true" /> -->
-	<app preloader="flixel.system.FlxPreloader" />
+    <!-- The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
+         or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal" -->
+    <app preloader="flixel.system.FlxPreloader" />
 
-	<!--Minimum without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2-->
-	<set name="SWF_VERSION" value="11.8" />
-	
-	<!-- ______________________ PSYCH ENGINE CUSTOMIZATION ______________________ -->
+    <!-- Minimum without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2 -->
+    <set name="SWF_VERSION" value="11.8" />
+    
+    <!-- ______________________ PSYCH ENGINE CUSTOMIZATION ______________________ -->
 
-	<define name="MODS_ALLOWED" if="desktop" />
-	<define name="HSCRIPT_ALLOWED" if="desktop" />
-	<define name="LUA_ALLOWED" if="desktop" />
-	<define name="ACHIEVEMENTS_ALLOWED" />
-	<define name="DISCORD_ALLOWED" />
-	<define name="TRANSLATIONS_ALLOWED" />
-	<define name="IRIS_DEBUG"/>
-	
-	<define name="SHOW_LOADING_SCREEN" />
-	<define name="PSYCH_WATERMARKS"/> <!-- DELETE THIS TO REMOVE THE PSYCH LOGO FROM LOADING SCREEN -->
+    <define name="MODS_ALLOWED" if="desktop" />
+    <define name="HSCRIPT_ALLOWED" if="desktop" />
+    <define name="LUA_ALLOWED" if="desktop" />
+    <define name="ACHIEVEMENTS_ALLOWED" />
+    <define name="DISCORD_ALLOWED" />
+    <define name="TRANSLATIONS_ALLOWED" />
+    <define name="IRIS_DEBUG"/>
+    
+    <define name="SHOW_LOADING_SCREEN" />
+    <define name="PSYCH_WATERMARKS"/> <!-- DELETE THIS TO REMOVE THE PSYCH LOGO FROM LOADING SCREEN -->
 
-	<section if="officialBuild">
-		<define name="TITLE_SCREEN_EASTER_EGG"/>
-		<define name="BASE_GAME_FILES" />
-		<define name="VIDEOS_ALLOWED" if="windows || linux || android" unless="32bits"/> <!-- IF YOU WANT TO USE VIDEOS ON YOUR SOURCE MOD, GET THIS LINE OUTSIDE OF THE SECTION -->
-	</section>
+    <section if="officialBuild">
+        <define name="TITLE_SCREEN_EASTER_EGG"/>
+        <define name="BASE_GAME_FILES" />
+        <define name="VIDEOS_ALLOWED" if="windows || linux || android" unless="32bits"/> <!-- IF YOU WANT TO USE VIDEOS ON YOUR SOURCE MOD, GET THIS LINE OUTSIDE OF THE SECTION -->
+    </section>
 
-	<!-- ____________________________ Window Settings ___________________________ -->
+    <!-- ____________________________ Window Settings ___________________________ -->
 
-	<!--These window settings apply to all targets-->
-	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
+    <!-- These window settings apply to all targets -->
+    <window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
 
-	<!--HTML5-specific-->
-	<window if="html5" resizable="true" />
+    <!-- HTML5-specific -->
+    <window if="html5" resizable="true" />
 
-	<!--Desktop-specific-->
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
+    <!-- Desktop-specific -->
+    <window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
-	<!--Mac-specific-->
-	<window if="mac" allow-high-dpi="true" />
+    <!-- Mac-specific -->
+    <window if="mac" allow-high-dpi="true" />
 
-	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+    <!-- Mobile-specific -->
+    <window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
 
-	<!--Switch-specific-->
-	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
+    <!-- Switch-specific -->
+    <window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
 
-	<!-- _____________________________ Path Settings ____________________________ -->
+    <!-- _____________________________ Path Settings ____________________________ -->
 
-	<set name="BUILD_DIR" value="export/debug" if="debug" />
-	<set name="BUILD_DIR" value="export/release" unless="debug" />
-	<set name="BUILD_DIR" value="export/32bit" if="32bits" />
+    <set name="BUILD_DIR" value="export/debug" if="debug" />
+    <set name="BUILD_DIR" value="export/release" unless="debug" />
+    <set name="BUILD_DIR" value="export/32bit" if="32bits" />
 
-	<classpath name="source" />
+    <classpath name="source" />
 
-	<!-- __________________________ Game Assets & Etc. __________________________ -->
-	
-	<!-- Turn on Crash Handler -->
-	<define name="CRASH_HANDLER" if="desktop release" />
+    <!-- __________________________ Game Assets & Etc. __________________________ -->
+    
+    <!-- Turn on Crash Handler -->
+    <define name="CRASH_HANDLER" if="desktop release" />
 
-	<!-- Assets -->
-	<assets path="assets/fonts" />
-	<assets path="assets/shared"        exclude="*.ogg" if="web"/>
-	<assets path="assets/shared"        exclude="*.mp3" unless="web"/>
-	<assets path="assets/embed"         exclude="*.ogg" if="web" embed="true"/>
-	<assets path="assets/embed"         exclude="*.mp3" unless="web" embed="true"/>
-	<assets path="assets/videos"        if="VIDEOS_ALLOWED"/>
-	<assets path="assets/songs"         exclude="*.ogg" if="web"/>
-	<assets path="assets/songs"         exclude="*.mp3" unless="web"/>
-	<assets path="assets/week_assets"   rename="assets" exclude="*.ogg" if="web"/>
-	<assets path="assets/week_assets"   rename="assets" exclude="*.mp3" unless="web"/>
-	<section if="TITLE_SCREEN_EASTER_EGG">
-		<assets path="assets/secrets" rename="assets/shared" exclude="*.ogg" if="web"/>
-		<assets path="assets/secrets" rename="assets/shared" exclude="*.mp3"  unless="web"/>
-	</section>
+    <!-- Assets -->
+    <assets path="assets/fonts" />
+    <assets path="assets/shared" exclude="*.ogg" if="web"/>
+    <assets path="assets/shared" exclude="*.mp3" unless="web"/>
+    <assets path="assets/embed" exclude="*.ogg" if="web" embed="true"/>
+    <assets path="assets/embed" exclude="*.mp3" unless="web" embed="true"/>
+    <assets path="assets/videos" if="VIDEOS_ALLOWED"/>
+    <assets path="assets/songs" exclude="*.ogg" if="web"/>
+    <assets path="assets/songs" exclude="*.mp3" unless="web"/>
+    <assets path="assets/week_assets" rename="assets" exclude="*.ogg" if="web"/>
+    <assets path="assets/week_assets" rename="assets" exclude="*.mp3" unless="web"/>
+    <section if="TITLE_SCREEN_EASTER_EGG">
+        <assets path="assets/secrets" rename="assets/shared" exclude="*.ogg" if="web"/>
+        <assets path="assets/secrets" rename="assets/shared" exclude="*.mp3" unless="web"/>
+    </section>
 
-	<section if="TRANSLATIONS_ALLOWED">
-		<assets path="assets/translations" rename="assets" exclude="*.ogg" if="web"/>
-		<assets path="assets/translations" rename="assets" exclude="*.mp3"  unless="web"/>
-	</section>
+    <section if="TRANSLATIONS_ALLOWED">
+        <assets path="assets/translations" rename="assets" exclude="*.ogg" if="web"/>
+        <assets path="assets/translations" rename="assets" exclude="*.mp3" unless="web"/>
+    </section>
 
-	<section if="BASE_GAME_FILES">
-		<assets path="assets/base_game" rename="assets" exclude="*.ogg" if="web"/>
-		<assets path="assets/base_game" rename="assets" exclude="*.mp3"  unless="web"/>
-		<haxelib name="grig.audio" if="BASE_GAME_FILES"/>
-		<haxelib name="funkin.vis" if="BASE_GAME_FILES"/>
-	</section>
+    <section if="BASE_GAME_FILES">
+        <assets path="assets/base_game" rename="assets" exclude="*.ogg" if="web"/>
+        <assets path="assets/base_game" rename="assets" exclude="*.mp3" unless="web"/>
+        <haxelib name="grig.audio" if="BASE_GAME_FILES"/>
+        <haxelib name="funkin.vis" if="BASE_GAME_FILES"/>
+    </section>
 
-	<define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
+    <define name="CHECK_FOR_UPDATES" if="desktop officialBuild"/>
 
-	<section if="MODS_ALLOWED">
-		<assets path='example_mods' rename='mods' embed='false' type='template'/>
-	</section>
-	<assets path='art/readme.txt' rename='do NOT readme.txt' />
+    <section if="MODS_ALLOWED">
+        <assets path='example_mods' rename='mods' embed='false' type='template'/>
+    </section>
+    <assets path='art/readme.txt' rename='do NOT readme.txt' />
 
-	<!-- OpenAL config -->
-	<section if="desktop">
-		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
-		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
-	</section>
+    <!-- OpenAL config -->
+    <section if="desktop">
+        <assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
+        <assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
+    </section>
 
-	<!--Windows Related Stuff-->
-	<haxelib name="hxWindowColorMode" if="windows"/>
+    <!-- Windows Related Stuff -->
+    <haxelib name="hxWindowColorMode" if="windows"/>
 
-	
+    <!-- _______________________________ Libraries ______________________________ -->
 
-	<!-- _______________________________ Libraries ______________________________ -->
+    <haxelib name="flixel" version="5.6.1"/>
+    <haxelib name="flixel-addons" version="3.2.2"/>
+    <haxelib name="tjson" version="1.4.0"/>
 
-	<haxelib name="flixel" version="5.6.1"/>
-	<haxelib name="flixel-addons" version="3.2.2"/>
-	<haxelib name="tjson" version="1.4.0"/>
+    <!-- Psych stuff needed -->
+    <haxelib name="linc_luajit" if="LUA_ALLOWED"/>
+    <haxelib name="hscript-iris" if="HSCRIPT_ALLOWED" version="1.1.0"/>
+    <haxelib name="hxvlc" if="VIDEOS_ALLOWED" version="1.8.2"/>
+    <haxelib name="hxdiscord_rpc" version="1.2.4" if="DISCORD_ALLOWED"/>
+    <haxelib name="flxanimate"/>
 
-	<!--Psych stuff needed-->
-	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
-	<haxelib name="hscript-iris" if="HSCRIPT_ALLOWED" version="1.1.0"/>
-	<haxelib name="hxvlc" if="VIDEOS_ALLOWED" version="1.8.2"/>
-	<haxelib name="hxdiscord_rpc" version="1.2.4" if="DISCORD_ALLOWED"/>
-	<haxelib name="flxanimate"/>
+    <!-- Disable Discord IO Thread -->
+    <haxedef name="DISCORD_DISABLE_IO_THREAD" if="hxdiscord_rpc" />
+    <haxedef name="NO_PRECOMPILED_HEADERS" if="linux" />
 
-	<!-- Disable Discord IO Thread -->
-	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="hxdiscord_rpc" />
-	<haxedef name="NO_PRECOMPILED_HEADERS" if="linux" />
+    <!-- Enables a terminal log prompt on debug builds -->
+    <haxelib name="hxcpp-debug-server" if="debug"/>
+    <haxedef name="HXC_LIBVLC_LOGGING" if="VIDEOS_ALLOWED debug" />
+    <haxedef name="HXVLC_NO_SHARE_DIRECTORY" if="VIDEOS_ALLOWED" />
+    <define name="x86_BUILD" if="32bits" />
+    
+    <!-- ______________________________ Haxedefines _____________________________ -->
 
-	<!-- Enables a terminal log prompt on debug builds -->
-	<haxelib name="hxcpp-debug-server" if="debug"/>
-	<haxedef name="HXC_LIBVLC_LOGGING" if="VIDEOS_ALLOWED debug" />
-	<haxedef name="HXVLC_NO_SHARE_DIRECTORY" if="VIDEOS_ALLOWED" />
-	<define name="x86_BUILD" if="32bits" />
-	
-	<!-- ______________________________ Haxedefines _____________________________ -->
+    <!-- Enable the Flixel core recording system -->
+    <!-- <haxedef name="FLX_RECORD" /> -->
 
-	<!--Enable the Flixel core recording system-->
-	<!--<haxedef name="FLX_RECORD" />-->
+    <!-- Disable the right and middle mouse buttons -->
+    <!-- <haxedef name="FLX_NO_MOUSE_ADVANCED" /> -->
 
-	<!--Disable the right and middle mouse buttons-->
-	<!-- <haxedef name="FLX_NO_MOUSE_ADVANCED" /> -->
+    <!-- Disable the native cursor API on Flash -->
+    <!-- <haxedef name="FLX_NO_NATIVE_CURSOR" /> -->
 
-	<!--Disable the native cursor API on Flash-->
-	<!--<haxedef name="FLX_NO_NATIVE_CURSOR" />-->
-
-	<!--Optimise inputs, be careful you will get null errors if you don't use conditionals in your game-->
+    <!-- Optimise inputs, be careful you will get null errors if you don't use conditionals
+ in your game-->
 	<!-- <haxedef name="FLX_NO_MOUSE" if="mobile" /> -->
 	<!-- <haxedef name="FLX_NO_KEYBOARD" if="mobile" /> -->
 	<!-- <haxedef name="FLX_NO_TOUCH" if="desktop" /> -->
