@@ -1,4 +1,4 @@
-// thank u daniel <3
+// thank u daniel <3 - ANON
 
 #ifdef _WIN32 // Windows
 #include <windows.h>

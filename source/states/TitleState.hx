@@ -1,5 +1,6 @@
 package states;
 
+import backend.ColorBlindness;
 import backend.WeekData;
 
 import flixel.input.keyboard.FlxKey;
@@ -79,6 +80,7 @@ class TitleState extends MusicBeatState
 		{
 			ClientPrefs.loadPrefs();
 			Language.reloadPhrases();
+			ColorBlindness.setFilter();
 		}
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());

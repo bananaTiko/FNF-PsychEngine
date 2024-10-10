@@ -2,7 +2,9 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Psych Engine" file="PsychEngine" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="ShadowMario" />
+	<file="FNF-UPF" packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
+	<app title="Friday Night Funkin': Untitled Psych Fork" unless="debug" />
+	<app title="Friday Night Funkin': Untitled Psych Fork (debug)" if="debug" 
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -110,6 +112,8 @@
 		<assets path="alsoft.txt" rename="plugins/alsoft.ini" type="text" if="windows"/>
 		<assets path="alsoft.txt" rename="plugins/alsoft.conf" type="text" unless="windows"/>
 	</section>
+
+	<!--Windows Related Stuff-->
 	<haxelib name="hxWindowColorMode" if="windows"/>
 
 	
@@ -195,5 +199,7 @@
 	<icon path="art/icon16.png" size='16'/>
 	<icon path="art/icon32.png" size='32'/>
 	<icon path="art/icon64.png" size='64'/>
-	<icon path="art/iconOG.png" />
+	<icon path="art/iconOG.png" unless='mac'/>
+    <icon path="art/iconMac.png" if='mac' unless='debug' />
+    <icon path="art/iconMac-debug.png" if='mac debug' />
 </project>
