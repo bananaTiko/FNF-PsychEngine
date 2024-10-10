@@ -117,7 +117,6 @@ class Main extends Sprite
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
-		var WindowBar:ClientPrefs.data.windowBar;
 
 		if (game.zoom == -1.0)
 		{
