@@ -13,7 +13,7 @@
     <haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/>
 
     <!-- The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
-         or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal" -->
+        or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal" -->
     <app preloader="flixel.system.FlxPreloader" />
 
     <!-- Minimum without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2 -->
@@ -149,8 +149,7 @@
     <!-- Disable the native cursor API on Flash -->
     <!-- <haxedef name="FLX_NO_NATIVE_CURSOR" /> -->
 
-    <!-- Optimise inputs, be careful you will get null errors if you don't use conditionals
- in your game-->
+    <!-- Optimise inputs, be careful you will get null errors if you don't use conditionals in your game-->
 	<!-- <haxedef name="FLX_NO_MOUSE" if="mobile" /> -->
 	<!-- <haxedef name="FLX_NO_KEYBOARD" if="mobile" /> -->
 	<!-- <haxedef name="FLX_NO_TOUCH" if="desktop" /> -->
