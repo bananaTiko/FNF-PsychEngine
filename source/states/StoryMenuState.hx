@@ -54,7 +54,7 @@ class StoryMenuState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Looking for a week", null);
+		DiscordClient.changePresence("Looking In the Story Menu", null);
 		#end
 
 		if(WeekData.weeksList.length < 1)

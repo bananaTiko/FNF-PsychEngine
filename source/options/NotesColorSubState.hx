@@ -51,7 +51,7 @@ class NotesColorSubState extends MusicBeatSubstate
 		super();
 		
 		#if DISCORD_ALLOWED
-		DiscordClient.changePresence("Note Colors Menu", null);
+		DiscordClient.changePresence("Changing Note Colors", null);
 		#end
 		
 		onPixel = PlayState.isPixelStage;

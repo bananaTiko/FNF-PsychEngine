@@ -21,7 +21,7 @@ class CreditsState extends MusicBeatState
 	{
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("looking at the credits", null);
+		DiscordClient.changePresence("Looking at the credits", null);
 		#end
 
 		persistentUpdate = true;
@@ -40,7 +40,6 @@ class CreditsState extends MusicBeatState
 		var defaultList:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			["Untitled Psych Fork Team"],
 			['bananaTiko',				'tiko',				"Creator and Programmer for Untitled Psych Fork",	'https://twitter.com/Banana_tiko_2',					'ffc127'],
-			['TheZoroForce240',             'zoro',             'Special Modcharting System',                       		'https://github.com/TheZoroForce240',          'FFD900'],
 			[""],
 			["Psych Engine Team"],
 			["Shadow Mario",		"shadowmario",		"Main Programmer and Head of Psych Engine",					"https://ko-fi.com/shadowmario",	"444444"],
