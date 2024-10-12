@@ -116,7 +116,7 @@ class MainMenuState extends MusicBeatState
 		if (leDate.getDay() == 2 && leDate.getHours() >= 18)
 			Achievements.unlock('tuesday_night_play');
 		if (leDate.getDay() == 3 && leDate.getHours() >= 18)
-			Achievements.unlock('wednesday_night_play')
+			Achievements.unlock('wednesday_night_play');
 		if (leDate.getDay() == 4 && leDate.getHours() >= 18)
 			Achievements.unlock('thursday_night_play');
 		if (leDate.getDay() == 5 && leDate.getHours() >= 18)
