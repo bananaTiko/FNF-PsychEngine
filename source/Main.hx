@@ -246,7 +246,7 @@ class Main extends Sprite
 
 		Application.current.window.alert(errMsg, "Error!");
 
-  FlxG.sound.play(Paths.sound('crash'));
+                FlxG.sound.play(Paths.sound('error'));
 
 		#if DISCORD_ALLOWED
 		DiscordClient.shutdown();
