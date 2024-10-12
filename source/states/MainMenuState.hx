@@ -109,8 +109,21 @@ class MainMenuState extends MusicBeatState
 		#if ACHIEVEMENTS_ALLOWED
 		// Unlocks "Freaky on a Friday Night" achievement if it's a Friday and between 18:00 PM and 23:59 PM
 		var leDate = Date.now();
+		if (leDate.getDay() == 0 && leDate.getHours() >= 18)
+			Achievements.unlock('sunday_night_play');
+		if (leDate.getDay() == 1 && leDate.getHours() >= 18)
+			Achievements.unlock('monday_night_play')
+		if (leDate.getDay() == 2 && leDate.getHours() >= 18)
+			Achievements.unlock('tuesday_night_play')
+		if (leDate.getDay() == 3 && leDate.getHours() >= 18)
+			Achievements.unlock('wednesday_night_play')
+		if (leDate.getDay() == 4 && leDate.getHours() >= 18)
+			Achievements.unlock('thursday_night_play')
 		if (leDate.getDay() == 5 && leDate.getHours() >= 18)
-			Achievements.unlock('friday_night_play');
+			Achievements.unlock('friday_night_play')
+		if (leDate.getDay() == 6 && leDate.getHours() >= 18)
+			Achievements.unlock('saturday_night_play')
+		
 
 		#if MODS_ALLOWED
 		Achievements.reloadList();
