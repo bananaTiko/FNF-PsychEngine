@@ -197,6 +197,7 @@
 	<icon path="art/icon3.png" size='3'/>
 	<icon path="art/icon4.png" size='4'/>
 	<icon path="art/icon8.png" size='8'/>
+ <icon path="art/icon12.png" size='12'/>
 	<icon path="art/icon16.png" size='16'/>
 	<icon path="art/icon24.png" size='24'/>
 	<icon path="art/icon32.png" size='32'/>
@@ -210,6 +211,8 @@
 	<icon path="art/icon416.png" size='416'/>
 	<icon path="art/icon512.png" size='512'/>
 	<icon path="art/icon900.png" size='900'/>
+ <icon path="art/icon1024.png" size='1024'/>
+
 	
 	<icon path="art/iconOG.png" unless='mac'/>
 
