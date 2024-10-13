@@ -8,7 +8,6 @@ import flixel.util.FlxStringUtil;
 
 import states.StoryMenuState;
 import states.FreeplayState;
-import states.GameExitState;
 import options.OptionsState;
 
 class PauseSubState extends MusicBeatSubstate
