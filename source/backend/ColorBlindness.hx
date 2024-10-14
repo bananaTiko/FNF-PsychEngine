@@ -67,77 +67,50 @@ class ColorBlindness extends ColorMatrixFilter
 					0.333, 0.333, 0.333, 0, 0,
 					0.333, 0.333, 0.333, 0, 0,
 					   0,    0,    0, 1, 0,
-				];
-			case "GAMEBOY": //These below are for fun
-				filter = [
-					0.25, 0.25, 0.25, 0, 0,
-					0.25, 0.25, 0.25, 0, 0,
-					0.25, 0.25, 0.25, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "VIRTUALBOY":
-				filter = [
-					0.30, 0.00, 0.00, 0, 0,
-					0.00, 0.00, 0.00, 0, 0,
-					0.00, 0.00, 0.00, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "NES":
-				filter = [
-					0.20, 0.50, 0.30, 0, 0,
-					0.20, 0.50, 0.30, 0, 0,
-					0.20, 0.50, 0.30, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "SNES":
-				filter = [
-					0.40, 0.40, 0.20, 0, 0,
-					0.40, 0.40, 0.20, 0, 0,
-					0.40, 0.40, 0.20, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "GAMEBOY_COLOR":
-				filter = [
-					0.50, 0.25, 0.25, 0, 0,
-					0.25, 0.50, 0.25, 0, 0,
-					0.25, 0.25, 0.50, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "SEGA_GENESIS":
-				filter = [
-					0.30, 0.59, 0.11, 0, 0,
-					0.30, 0.59, 0.11, 0, 0,
-					0.30, 0.59, 0.11, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "ATARI_2600":
+				]
+			case "VIVID":
 				filter = [
 					0.90, 0.10, 0.00, 0, 0,
 					0.00, 0.80, 0.20, 0, 0,
 					0.00, 0.20, 0.80, 0, 0,
 					   0,    0,    0, 1, 0,
 				];
-			case "COMMODORE_64":
-				filter = [
-					0.35, 0.55, 0.10, 0, 0,
-					0.35, 0.55, 0.10, 0, 0,
-					0.35, 0.55, 0.10, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "APPLE_II":
-				filter = [
-					0.20, 0.60, 0.20, 0, 0,
-					0.20, 0.60, 0.20, 0, 0,
-					0.20, 0.60, 0.20, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
-			case "ZX_SPECTRUM":
-				filter = [
-					0.30, 0.59, 0.11, 0, 0,
-					0.30, 0.59, 0.11, 0, 0,
-					0.30, 0.59, 0.11, 0, 0,
-					   0,    0,    0, 1, 0,
-				];
+	            	case "DOG_VISION":
+		                filter = [
+		                    	0.5, 0.2, 0.2, 0, 0, // Reduced red, more green
+		                    	0.2, 0.5, 0.2, 0, 0, // More yellow and green
+		                   	 0.1, 0.1, 0.8, 0, 0, // Increased blue
+					   0,    0,    0, 1, 0, // No change in alpha
+		                ];
+	            	case "GRAYSCALE":
+		                filter = [
+		                    	0.299, 0.299, 0.299, 0, 0, // Red channel converted to grayscale
+		                    	0.587, 0.587, 0.587, 0, 0, // Green channel converted to grayscale
+		                    	0.114, 0.114, 0.114, 0, 0, // Blue channel converted to grayscale
+					   0,     0,     0, 1, 0      // Alpha remains unchanged
+		                ];
+	            	case "GRAYSCALE INVERTED":
+		                filter = [
+		                    	0.701, 0.701, 0.701, 0, 0, // Red channel converted to grayscale
+		                    	0.413 0.413, 0.413, 0, 0, // Green channel converted to grayscale
+		                    	0.886, 0.886, 0.886, 0, 0, // Blue channel converted to grayscale
+					   0,     0,     0, 1, 0      // Alpha remains unchanged
+		                ];
+	            	case "INVERTED":
+		                filter = [
+ 					0,  1,  1,  0, 0, // Red to Cyan
+					1,  0,  1,  0, 0, // Green to Magenta
+					1,  1,  0,  0, 0, // Blue to Yellow
+					1,  1,  1,  1, 0, // White to Black
+				       -1, -1, -1,  1, 0, // Black to White
+					0,  0,  0,  1, 0, // Light Blue to Orange
+					0,  0,  0,  1, 0, // Orange to Light Blue
+					0,  1,  0,  0, 0, // Pink to Green
+					0,  1,  0,  0, 0, // Yellow to Blue
+					0,  0,  1,  0, 0, // Purple to Lime Green
+ 					0,  0,  1,  0, 0  // Lime Green to Purple
+		                ];
+
 			default:
 		}
 
