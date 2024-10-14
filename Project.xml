@@ -214,7 +214,7 @@
 	<icon path="art/icon900.png" size='900'/>
 	<icon path="art/icon1024.png" size='1024'/>
 	<icon path="art/icon2048.png" size='2048'/>
-	<icon path="art/icon3110.png" size='3110/>
+	<icon path="art/icon3110.png" size='3110'/>
 
 	
 	<icon path="art/iconOG.png" unless='mac'/>
