@@ -67,7 +67,7 @@ class ColorBlindness extends ColorMatrixFilter
 					0.333, 0.333, 0.333, 0, 0,
 					0.333, 0.333, 0.333, 0, 0,
 					   0,    0,    0, 1, 0,
-				]
+				];
 			case "VIVID":
 				filter = [
 					0.90, 0.10, 0.00, 0, 0,
