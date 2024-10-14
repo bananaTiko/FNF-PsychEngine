@@ -92,7 +92,7 @@ class ColorBlindness extends ColorMatrixFilter
 	            	case "GRAYSCALE INVERTED":
 		                filter = [
 		                    	0.701, 0.701, 0.701, 0, 0, // Red channel converted to grayscale
-		                    	0.413 0.413, 0.413, 0, 0, // Green channel converted to grayscale
+		                    	0.413, 0.413, 0.413, 0, 0, // Green channel converted to grayscale
 		                    	0.886, 0.886, 0.886, 0, 0, // Blue channel converted to grayscale
 					   0,     0,     0, 1, 0      // Alpha remains unchanged
 		                ];
