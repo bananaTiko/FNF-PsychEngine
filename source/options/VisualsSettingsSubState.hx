@@ -147,8 +147,8 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Menu Music:',
 		"What song do you prefer for the Menus?",
 		'daMenuMusic',
-		STRING,
-		['Default', 'VS Impostor', 'VS Nonsense V2']);
+			STRING,
+			['Default', 'VS Impostor', 'VS Nonsense V2']);
 		addOption(option);
 		option.onChange = onChangeMenuMusic;
 		

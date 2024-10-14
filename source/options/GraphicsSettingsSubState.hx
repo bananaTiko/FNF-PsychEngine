@@ -44,7 +44,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			'Choose your color blindness filter of your choice.', 
 			'colorFilter', 
 			STRING,
-			['NONE', "DEUTERANOPIA", "PROTANOPIA", "TRITANOPIA"]
+			['NONE', "DEUTERANOPIA", "PROTANOPIA", "TRITANOPIA", "TRITANOMALY", "PROTANOMALY", "ACHROMATOPSIA", "MONOCHROMACY", "GAMEBOY", "GAMEBOY_COLOR", "VIRTUALBOY", "NES", "SNES", "SEGA_GENESIS", "ATARI_2600", "COMMODORE_64", "APPLE_II" "ZX_SPECTRUM"]
 		);
 		option.onChange = onChangeColorFilter;
 		addOption(option);
@@ -64,7 +64,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 
 		final refreshRate:Int = FlxG.stage.application.window.displayMode.refreshRate;
 		option.minValue = 60;
-		option.maxValue = 240;
+		option.maxValue = 999;
 		option.defaultValue = Std.int(FlxMath.bound(refreshRate, option.minValue, option.maxValue));
 		option.displayFormat = '%v FPS';
 		option.onChange = onChangeFramerate;

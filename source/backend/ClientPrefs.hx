@@ -75,7 +75,7 @@ import states.TitleState;
 
 	public var comboOffset:Array<Int> = [0, 0, 0, 0];
 	public var ratingOffset:Int = 0;
- public var epicWindow:Int = 22;
+    public var epicWindow:Int = 22;
 	public var sickWindow:Int = 45;
 	public var goodWindow:Int = 90;
 	public var badWindow:Int = 135;
@@ -193,7 +193,7 @@ class ClientPrefs {
 
 		if(FlxG.save.data.framerate == null) {
 			final refreshRate:Int = FlxG.stage.application.window.displayMode.refreshRate;
-			data.framerate = Std.int(FlxMath.bound(refreshRate, 60, 240));
+			data.framerate = Std.int(FlxMath.bound(refreshRate, 60, 999));
 		}
 		#end
 
