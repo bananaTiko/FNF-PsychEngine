@@ -44,7 +44,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 			'Choose your color blindness filter of your choice.', 
 			'colorFilter', 
 			STRING,
-			['NONE', "DEUTERANOPIA", "PROTANOPIA", "TRITANOPIA", "TRITANOMALY", "PROTANOMALY", "ACHROMATOPSIA", "MONOCHROMACY", "GAMEBOY", "GAMEBOY_COLOR", "VIRTUALBOY", "NES", "SNES", "SEGA_GENESIS", "ATARI_2600", "COMMODORE_64", "APPLE_II", "ZX_SPECTRUM"]
+			['NONE', "DEUTERANOPIA", "PROTANOPIA", "TRITANOPIA", "TRITANOMALY", "PROTANOMALY", "ACHROMATOPSIA", "MONOCHROMACY", "VIVID", "SATURATED", "DOG_VISION", "INVERTED", "GRAYSCALE", "GRAYSCALE INVERTED"]
 		);
 		option.onChange = onChangeColorFilter;
 		addOption(option);
