@@ -138,6 +138,7 @@ class Main extends Sprite
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
+		ClientPrefs.loadPrefs()
 		#if ACHIEVEMENTS_ALLOWED Achievements.load(); #end
 		var gameObject = new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen);
 		// FlxG.game._customSoundTray wants just the class, it calls new from
@@ -246,7 +247,11 @@ class Main extends Sprite
 
 		Application.current.window.alert(errMsg, "Error!");
 
-                FlxG.sound.play(Paths.sound('error'));
+        FlxG.sound.play(Paths.sound('error'));
+
+		#if windows
+		PlatformUtil.sendWindowsNotification('Untitled Psych Fork has crashed', 'Please report this error to the GitHub page: https://github.com/bananaTiko/FNF-UntitledPsychFork');
+		#end
 
 		#if DISCORD_ALLOWED
 		DiscordClient.shutdown();

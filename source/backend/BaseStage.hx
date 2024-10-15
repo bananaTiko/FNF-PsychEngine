@@ -88,6 +88,10 @@ class BaseStage extends FlxBasic
 	public function eventPushed(event:EventNote) {}
 	public function eventPushedUnique(event:EventNote) {}
 
+	//note hit stuff
+	public function goodNoteHit(note:Note) {}
+	public function opponentNoteHit(note:Note) {}	
+
 	// Note Hit/Miss
 	public function goodNoteHit(note:Note) {}
 	public function opponentNoteHit(note:Note) {}

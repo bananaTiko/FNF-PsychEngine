@@ -596,6 +596,9 @@ class TitleState extends MusicBeatState
 					// FlxG.sound.music.stop();
 					FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.data.daMenuMusic), 0);
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
+					#if windows
+					PlatformUtil.sendWindowsNotification('Gettin Freaky', 'Untitled Psych Fork Has Loaded');
+					#end
 				case 2:
 					createCoolText(['Funkin Crew Inc', 'Shadow Mario', 'BananaTiko2']);
 				case 4:

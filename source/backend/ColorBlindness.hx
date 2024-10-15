@@ -67,8 +67,7 @@ class ColorBlindness extends ColorMatrixFilter
 					0.333, 0.333, 0.333, 0, 0,
 					0.333, 0.333, 0.333, 0, 0,
 					   0,    0,    0, 1, 0,
-				]
-
+				];
 			default:
 		}
 
