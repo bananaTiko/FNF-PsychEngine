@@ -1,11 +1,15 @@
 package;
 
+import openfl.display.FPS;
+
 #if android
 import android.content.Context;
 #end
 
 import backend.ColorBlindness;
-import debug.FPSCounter;
+//import debug.FPSCounter; 
+// will Uncomment if openfl.display.fps doesn't work
+import funkin.components.MemoryCounter;
 
 import flixel.graphics.FlxGraphic;
 import flixel.FlxGame;
@@ -69,6 +73,7 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
+	public static var memoryCounter:MemoryCounter;
 
 	public static var colorFilter:ColorBlindness;
 
@@ -158,6 +163,15 @@ class Main extends Sprite
 		}
 		#end
 
+		#if !html5
+		// TODO: disabled on HTML5 (todo: find another method that works?)
+		memoryCounter = new MemoryCounter(10, 13, 0xFFFFFF);
+		addChild(memoryCounter);
+		if(memoryCounter != null) {
+			memoryCounter.visible = ClientPrefs.data.showFPS;
+		}
+		#end
+
 		#if linux
 		var icon = Image.fromFile("icon.png");
 		Lib.current.stage.window.setIcon(icon);
@@ -244,8 +258,12 @@ class Main extends Sprite
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
-
+		
+		#if windows
 		Application.current.window.alert(errMsg, "Error!");
+		#elseif linux
+		Sys.command("notify-send",["Error!",errMsg]);
+		#end
 
         FlxG.sound.play(Paths.sound('error'));
 

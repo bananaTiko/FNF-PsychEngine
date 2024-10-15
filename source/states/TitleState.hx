@@ -664,6 +664,18 @@ class TitleState extends MusicBeatState
 						FlxG.camera.flash(FlxColor.WHITE, 2);
 						skippedIntro = true;
 
+						FlxTween.tween(logoBl, {y: -100}, 1.4, {ease: FlxEase.expoInOut});
+
+						logoBl.angle = -4;
+
+						new FlxTimer().start(0.01, function(tmr:FlxTimer)
+						{
+							if (logoBl.angle == -4)
+								FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
+							if (logoBl.angle == 4)
+								FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
+						}, 0);
+
 						FlxG.sound.playMusic(Paths.music('freakyMenu-' + ClientPrefs.data.daMenuMusic), 0);
 						FlxG.sound.music.fadeIn(4, 0, 0.7);
 						return;
