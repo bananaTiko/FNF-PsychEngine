@@ -683,6 +683,7 @@ if(eventNotes.length < 1) checkEventNote();
 		#end
 		return playbackRate;
 	}
+}
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 	public function addTextToDebug(text:String, color:FlxColor) {
@@ -692,12 +693,12 @@ if(eventNotes.length < 1) checkEventNote();
 		newText.disableTime = 6;
 		newText.alpha = 1;
 		newText.setPosition(10, 8 - newText.height);
-	
+
 		luaDebugGroup.forEachAlive(function(spr:psychlua.DebugLuaText) {
 			spr.y += newText.height + 2;
 		});
 		luaDebugGroup.add(newText);
-	
+
 		Sys.println(text);
 	}
 	#end
