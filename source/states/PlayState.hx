@@ -700,6 +700,7 @@ if(eventNotes.length < 1) checkEventNote();
 
 		Sys.println(text);
 	}
+}
 	#end
 
 	public function reloadHealthBarColors() {
