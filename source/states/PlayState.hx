@@ -700,7 +700,6 @@ if(eventNotes.length < 1) checkEventNote();
 
 		Sys.println(text);
 	}
-}
 	#end
 
 
@@ -3654,6 +3653,5 @@ if(eventNotes.length < 1) checkEventNote();
 		ghost.rgbShader.b = ghost.rgbShader.b;
 		}
 		#end
-		}
 	}
 }
