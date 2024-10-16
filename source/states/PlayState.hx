@@ -3651,8 +3651,9 @@ if(eventNotes.length < 1) checkEventNote();
 		ghost.rgbShader.r = ghost.rgbShader.r;
 		ghost.rgbShader.g = ghost.rgbShader.g;
 		ghost.rgbShader.b = ghost.rgbShader.b;
-
-			public function initLuaShader(name:String, ?glslVersion:Int = 120)
+	}
+						
+	public function initLuaShader(name:String, ?glslVersion:Int = 120)
 	{
 		if(!ClientPrefs.data.shaders) return false;
 
@@ -3698,6 +3699,7 @@ if(eventNotes.length < 1) checkEventNote();
 		FlxG.log.warn('This platform doesn\'t support Runtime Shaders!');
 		#end
 		return false;
-	}	
+	}
+	
 	#end
 }
