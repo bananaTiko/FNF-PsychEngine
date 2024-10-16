@@ -3651,7 +3651,8 @@ if(eventNotes.length < 1) checkEventNote();
 		ghost.rgbShader.r = ghost.rgbShader.r;
 		ghost.rgbShader.g = ghost.rgbShader.g;
 		ghost.rgbShader.b = ghost.rgbShader.b;
-		}
-		#end
-	}
+	}	
+	#end
+    }
+}
 }
