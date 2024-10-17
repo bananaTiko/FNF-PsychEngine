@@ -256,7 +256,7 @@ class PlayState extends MusicBeatState
 	var endCallback:Void->Void = null;
 
 	static var nextReloadAll:Bool = false;
-	override function create()
+	 function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
@@ -1120,7 +1120,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	// fun fact: functions can be overriden by just doing this
+	// fun fact: functions can be n by just doing this
 	// `updateScore = function(miss:Bool = false) { ... }
 	// its like if it was a variable but its just a function!
 	// cool right? -Crow
@@ -1547,7 +1547,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	override function openSubState(SubState:FlxSubState)
+	 function openSubState(SubState:FlxSubState)
 	{
 		stagesFunc(function(stage:BaseStage) stage.openSubState(SubState));
 		if (paused)
@@ -1566,7 +1566,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	var canResync:Bool = true;
-	override function closeSubState()
+	 function closeSubState()
 	{
 		super.closeSubState();
 		
@@ -1586,13 +1586,13 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	override function onFocus():Void
+	 function onFocus():Void
 	{
 		if (health > 0 && !paused) resetRPC(Conductor.songPosition > 0.0);
 		super.onFocus();
 	}
 
-	override function onFocusLost():Void
+	 function onFocusLost():Void
 	{
 		#if DISCORD_ALLOWED
 		if (health > 0 && !paused && autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
@@ -1645,7 +1645,7 @@ if(eventNotes.length < 1) checkEventNote();
 	var freezeCamera:Bool = false;
 	var allowDebugKeys:Bool = true;
 
-	override function update(elapsed:Float)
+	 function update(elapsed:Float)
 	{
 		if(!inCutscene && !paused && !freezeCamera) {
 			FlxG.camera.followLerp = 0.04 * cameraSpeed * playbackRate;
@@ -3150,7 +3150,7 @@ function moveCamera(isDad:Bool)
 		grpNoteSplashes.add(splash);
 	}
 
-	override function destroy() {
+	 function destroy() {
 		#if LUA_ALLOWED
 		for (lua in luaArray)
 		{
@@ -3190,7 +3190,7 @@ function moveCamera(isDad:Bool)
 	}
 
 	var lastStepHit:Int = -1;
-	override function stepHit()
+	 function stepHit()
 	{
 		super.stepHit();
 
@@ -3205,7 +3205,7 @@ function moveCamera(isDad:Bool)
 
 	var lastBeatHit:Int = -1;
 
-	override function beatHit()
+	 function beatHit()
 	{
 		if(lastBeatHit >= curBeat) {
 			//trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
@@ -3247,7 +3247,7 @@ function moveCamera(isDad:Bool)
 			boyfriend.dance();
 	}
 
-	override function sectionHit()
+	 function sectionHit()
 	{
 		if (SONG.notes[curSection] != null)
 		{
