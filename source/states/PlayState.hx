@@ -94,31 +94,31 @@ class PlayState extends MusicBeatState
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
 
-	public var boyfriendMap:Map<String, Character> = new Map<String, Character>();
-	public var dadMap:Map<String, Character> = new Map<String, Character>();
-	public var gfMap:Map<String, Character> = new Map<String, Character>();
+	var boyfriendMap:Map<String, Character> = new Map<String, Character>();
+	var dadMap:Map<String, Character> = new Map<String, Character>();
+	var gfMap:Map<String, Character> = new Map<String, Character>();
 
 	#if HSCRIPT_ALLOWED
-	public var hscriptArray:Array<HScript> = [];
+	var hscriptArray:Array<HScript> = [];
 	#end
 
-	public var BF_X:Float = 770;
-	public var BF_Y:Float = 100;
-	public var DAD_X:Float = 100;
-	public var DAD_Y:Float = 100;
-	public var GF_X:Float = 400;
-	public var GF_Y:Float = 130;
+	var BF_X:Float = 770;
+	var BF_Y:Float = 100;
+	var DAD_X:Float = 100;
+	var DAD_Y:Float = 100;
+	var GF_X:Float = 400;
+	var GF_Y:Float = 130;
 
-	public var songSpeedTween:FlxTween;
-	public var songSpeed(default, set):Float = 1;
-	public var songSpeedType:String = "multiplicative";
-	public var noteKillOffset:Float = 350;
+	var songSpeedTween:FlxTween;
+	var songSpeed(default, set):Float = 1;
+	var songSpeedType:String = "multiplicative";
+	var noteKillOffset:Float = 350;
 
-	public var playbackRate(default, set):Float = 1;
+	var playbackRate(default, set):Float = 1;
 
-	public var boyfriendGroup:FlxSpriteGroup;
-	public var dadGroup:FlxSpriteGroup;
-	public var gfGroup:FlxSpriteGroup;
+	var boyfriendGroup:FlxSpriteGroup;
+	var dadGroup:FlxSpriteGroup;
+	var gfGroup:FlxSpriteGroup;
 	public static var curStage:String = '';
 	public static var stageUI:String = "normal";
 	public static var isPixelStage(get, never):Bool;
@@ -133,75 +133,75 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
-	public var spawnTime:Float = 2000;
+	var spawnTime:Float = 2000;
 
-	public var inst:FlxSound;
-	public var vocals:FlxSound;
-	public var opponentVocals:FlxSound;
+	var inst:FlxSound;
+	var vocals:FlxSound;
+	var opponentVocals:FlxSound;
 
-	public var dad:Character = null;
-	public var gf:Character = null;
-	public var boyfriend:Character = null;
+	var dad:Character = null;
+	var gf:Character = null;
+	var boyfriend:Character = null;
 
-	public var notes:FlxTypedGroup<Note>;
-	public var unspawnNotes:Array<Note> = [];
-	public var eventNotes:Array<EventNote> = [];
+	var notes:FlxTypedGroup<Note>;
+	var unspawnNotes:Array<Note> = [];
+	var eventNotes:Array<EventNote> = [];
 
-	public var camFollow:FlxObject;
+	var camFollow:FlxObject;
 	private static var prevCamFollow:FlxObject;
 
-	public var strumLineNotes:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
-	public var opponentStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
-	public var playerStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
-	public var grpNoteSplashes:FlxTypedGroup<NoteSplash> = new FlxTypedGroup<NoteSplash>();
+	var strumLineNotes:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
+	var opponentStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
+	var playerStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
+	var grpNoteSplashes:FlxTypedGroup<NoteSplash> = new FlxTypedGroup<NoteSplash>();
 
-	public var camZooming:Bool = false;
-	public var camZoomingMult:Float = 1;
-    public var camZoomingFrequency:Float = 4;
-	public var camZoomingDecay:Float = 1;
+	var camZooming:Bool = false;
+	var camZoomingMult:Float = 1;
+    var camZoomingFrequency:Float = 4;
+	var camZoomingDecay:Float = 1;
 	private var curSong:String = "";
 
-	public var gfSpeed:Int = 1;
-	public var health(default, set):Float = 1;
-	public var combo:Int = 0;
+	var gfSpeed:Int = 1;
+	var health(default, set):Float = 1;
+	var combo:Int = 0;
 
-	public var healthBar:Bar;
-	public var timeBar:Bar;
+	var healthBar:Bar;
+	var timeBar:Bar;
 	var songPercent:Float = 0;
 
-	public var ratingsData:Array<Rating> = Rating.loadDefault();
+	var ratingsData:Array<Rating> = Rating.loadDefault();
 
 	private var generatedMusic:Bool = false;
-	public var endingSong:Bool = false;
-	public var startingSong:Bool = false;
+	var endingSong:Bool = false;
+	var startingSong:Bool = false;
 	private var updateTime:Bool = true;
 	public static var changedDifficulty:Bool = false;
 	public static var chartingMode:Bool = false;
 
 	//Gameplay settings
-	public var healthGain:Float = 1;
-	public var healthLoss:Float = 1;
+	var healthGain:Float = 1;
+	var healthLoss:Float = 1;
 
-	public var guitarHeroSustains:Bool = false;
-	public var instakillOnMiss:Bool = false;
-	public var cpuControlled:Bool = false;
-	public var practiceMode:Bool = false;
-	public var pressMissDamage:Float = 0.05;
+	var guitarHeroSustains:Bool = false;
+	var instakillOnMiss:Bool = false;
+	var cpuControlled:Bool = false;
+	var practiceMode:Bool = false;
+	var pressMissDamage:Float = 0.05;
 
-	public var botplaySine:Float = 0;
-	public var botplayTxt:FlxText;
+	var botplaySine:Float = 0;
+	var botplayTxt:FlxText;
 
-	public var iconP1:HealthIcon;
-	public var iconP2:HealthIcon;
-	public var camHUD:FlxCamera;
-	public var camGame:FlxCamera;
-	public var camOther:FlxCamera;
-	public var cameraSpeed:Float = 1;
+	var iconP1:HealthIcon;
+	var iconP2:HealthIcon;
+	var camHUD:FlxCamera;
+	var camGame:FlxCamera;
+	var camOther:FlxCamera;
+	var cameraSpeed:Float = 1;
 
-	public var songScore:Int = 0;
-	public var songHits:Int = 0;
-	public var songMisses:Int = 0;
-	public var scoreTxt:FlxText;
+	var songScore:Int = 0;
+	var songHits:Int = 0;
+	var songMisses:Int = 0;
+	var scoreTxt:FlxText;
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
 
@@ -210,21 +210,21 @@ class PlayState extends MusicBeatState
 	public static var seenCutscene:Bool = false;
 	public static var deathCounter:Int = 0;
 
-	public var defaultCamZoom:Float = 1.0;
-	public var defaultStageZoom:Float = 1.05;
+	var defaultCamZoom:Float = 1.0;
+	var defaultStageZoom:Float = 1.05;
 	private static var zoomTween:FlxTween;
 
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
-	public var inCutscene:Bool = false;
-	public var skipCountdown:Bool = false;
+	var inCutscene:Bool = false;
+	var skipCountdown:Bool = false;
 	var songLength:Float = 0;
 
-	public var boyfriendCameraOffset:Array<Float> = null;
-	public var opponentCameraOffset:Array<Float> = null;
-	public var girlfriendCameraOffset:Array<Float> = null;
+	var boyfriendCameraOffset:Array<Float> = null;
+	var opponentCameraOffset:Array<Float> = null;
+	var girlfriendCameraOffset:Array<Float> = null;
 
 	#if DISCORD_ALLOWED
 	// Discord RPC variables
@@ -240,20 +240,20 @@ class PlayState extends MusicBeatState
 
 	// Lua shit
 	public static var instance:PlayState;
-	#if LUA_ALLOWED public var luaArray:Array<FunkinLua> = []; #end
+	#if LUA_ALLOWED var luaArray:Array<FunkinLua> = []; #end
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 	private var luaDebugGroup:FlxTypedGroup<psychlua.DebugLuaText>;
 	#end
-	public var introSoundsSuffix:String = '';
+	var introSoundsSuffix:String = '';
 
 	// Less laggy controls
 	private var keysArray:Array<String>;
-	public var songName:String;
+	var songName:String;
 
 	// Callbacks for stages
-	public var startCallback:Void->Void = null;
-	public var endCallback:Void->Void = null;
+	var startCallback:Void->Void = null;
+	var endCallback:Void->Void = null;
 
 	public static var nextReloadAll:Bool = false;
 	override public function create()
@@ -822,7 +822,7 @@ if(eventNotes.length < 1) checkEventNote();
 		char.y += char.positionArray[1];
 	}
 
-	public var videoCutscene:VideoSprite = null;
+	var videoCutscene:VideoSprite = null;
 	function startVideo(name:String, forMidSong:Bool = false, canSkip:Bool = true, loop:Bool = false, playOnLoad:Bool = true)
 	{
 		#if VIDEOS_ALLOWED
@@ -888,7 +888,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	var dialogueCount:Int = 0;
-	public var psychDialogue:DialogueBoxPsych;
+	var psychDialogue:DialogueBoxPsych;
 	//You don't have to add a song, just saying. You can just do "startDialogue(DialogueBoxPsych.parseDialogue(Paths.json(songName + '/dialogue')))" and it should load dialogue.json
 	function startDialogue(dialogueFile:DialogueFile, ?song:String = null):Void
 	{
@@ -924,9 +924,9 @@ if(eventNotes.length < 1) checkEventNote();
 	var finishTimer:FlxTimer = null;
 
 	// For being able to mess with the sprites on Lua
-	public var countdownReady:FlxSprite;
-	public var countdownSet:FlxSprite;
-	public var countdownGo:FlxSprite;
+	var countdownReady:FlxSprite;
+	var countdownSet:FlxSprite;
+	var countdownGo:FlxSprite;
 	public static var startOnTime:Float = 0;
 
 	function cacheCountdown()
@@ -1503,7 +1503,7 @@ if(eventNotes.length < 1) checkEventNote();
 		callOnScripts('onEventPushed', [subEvent.event, subEvent.value1 != null ? subEvent.value1 : '', subEvent.value2 != null ? subEvent.value2 : '', subEvent.strumTime]);
 	}
 
-	public var skipArrowStartTween:Bool = false; //for lua
+	var skipArrowStartTween:Bool = false; //for lua
 	private function generateStaticArrows(player:Int):Void
 	{
 		var strumLineX:Float = ClientPrefs.data.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X;
@@ -1565,7 +1565,7 @@ if(eventNotes.length < 1) checkEventNote();
 		super.openSubState(SubState);
 	}
 
-	public var canResync:Bool = true;
+	var canResync:Bool = true;
 	override function closeSubState()
 	{
 		super.closeSubState();
@@ -1602,7 +1602,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	// Updating Discord Rich Presence.
-	public var autoUpdateRPC:Bool = true; //performance setting for custom RPC things
+	var autoUpdateRPC:Bool = true; //performance setting for custom RPC things
 	function resetRPC(?showTime:Bool = false)
 	{
 		#if DISCORD_ALLOWED
@@ -1638,8 +1638,8 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public var paused:Bool = false;
-	public var canReset:Bool = true;
+	var paused:Bool = false;
+	var canReset:Bool = true;
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var freezeCamera:Bool = false;
@@ -1954,8 +1954,8 @@ if(eventNotes.length < 1) checkEventNote();
 		MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
 	}
 
-	public var isDead:Bool = false; //Don't mess with this on Lua!!!
-	public var gameOverTimer:FlxTimer;
+	var isDead:Bool = false; //Don't mess with this on Lua!!!
+	var gameOverTimer:FlxTimer;
 	function doDeathCheck(?skipHealthCheck:Bool = false) {
 		if (((skipHealthCheck && instakillOnMiss) || health <= 0) && !practiceMode && !isDead && gameOverTimer == null)
 		{
@@ -2008,7 +2008,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return false;
 	}
 
-	public function checkEventNote() {
+    function checkEventNote() {
 		while(eventNotes.length > 0) {
 			var leStrumTime:Float = eventNotes[0].strumTime;
 			if(Conductor.songPosition < leStrumTime) {
@@ -2028,7 +2028,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public function triggerEvent(eventName:String, value1:String, value2:String, strumTime:Float) {
+	function triggerEvent(eventName:String, value1:String, value2:String, strumTime:Float) {
 		var flValue1:Null<Float> = Std.parseFloat(value1);
 		var flValue2:Null<Float> = Std.parseFloat(value2);
 		if(Math.isNaN(flValue1)) flValue1 = null;
@@ -2303,7 +2303,7 @@ if(eventNotes.length < 1) checkEventNote();
 		callOnScripts('onEvent', [eventName, value1, value2, strumTime]);
 	}
 
-	public function moveCameraSection(?sec:Null<Int>):Void {
+	function moveCameraSection(?sec:Null<Int>):Void {
 		if(sec == null) sec = curSection;
 		if(sec < 0) sec = 0;
 
@@ -2328,7 +2328,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	var cameraTwn:FlxTween;
-	public function moveCamera(isDad:Bool)
+function moveCamera(isDad:Bool)
 	{
 		if(isDad)
 		{
@@ -2357,7 +2357,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public function tweenCamIn() {
+	function tweenCamIn() {
 		if (songName == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
 			cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
 				function (twn:FlxTween) {
@@ -2367,7 +2367,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public function finishSong(?ignoreNoteOffset:Bool = false):Void
+	function finishSong(?ignoreNoteOffset:Bool = false):Void
 	{
 		updateTime = false;
 		FlxG.sound.music.volume = 0;
@@ -2387,8 +2387,8 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 
-	public var transitioning = false;
-	public function endSong()
+	var transitioning = false;
+	function endSong()
 	{
 		//Should kill you if you tried to cheat
 		if(!startingSong)
@@ -2502,7 +2502,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return true;
 	}
 
-	public function KillNotes() {
+	function KillNotes() {
 		while(notes.length > 0) {
 			var daNote:Note = notes.members[0];
 			daNote.active = false;
@@ -2513,19 +2513,19 @@ if(eventNotes.length < 1) checkEventNote();
 		eventNotes = [];
 	}
 
-	public var totalPlayed:Int = 0;
-	public var totalNotesHit:Float = 0.0;
+	var totalPlayed:Int = 0;
+	var totalNotesHit:Float = 0.0;
 
-	public var showCombo:Bool = false;
-	public var showComboNum:Bool = true;
-	public var showRating:Bool = true;
+	var showCombo:Bool = false;
+	var showComboNum:Bool = true;
+	var showRating:Bool = true;
 
 	// Stores Ratings and Combo Sprites in a group
-	public var comboGroup:FlxSpriteGroup;
+	var comboGroup:FlxSpriteGroup;
 	// Stores HUD Objects in a Group
-	public var uiGroup:FlxSpriteGroup;
+	var uiGroup:FlxSpriteGroup;
 	// Stores Note Objects in a Group
-	public var noteGroup:FlxTypedGroup<FlxBasic>;
+	var noteGroup:FlxTypedGroup<FlxBasic>;
 
 	private function cachePopUpScore()
 	{
@@ -2688,7 +2688,7 @@ if(eventNotes.length < 1) checkEventNote();
 		});
 	}
 
-	public var strumsBlocked:Array<Bool> = [];
+	var strumsBlocked:Array<Bool> = [];
 	private function onKeyPress(event:KeyboardEvent):Void
 	{
 
@@ -3023,7 +3023,7 @@ if(eventNotes.length < 1) checkEventNote();
 		stagesFunc(function(stage:BaseStage) stage.opponentNoteHit(note));
 	}
 
-	public function goodNoteHit(note:Note):Void
+	function goodNoteHit(note:Note):Void
 	{
 		if(note.wasGoodHit) return;
 		if(cpuControlled && note.ignoreNote) return;
@@ -3129,13 +3129,13 @@ if(eventNotes.length < 1) checkEventNote();
 	stagesFunc(function(stage:BaseStage) stage.goodNoteHit(note));
 }
 
-	public function invalidateNote(note:Note):Void {
+	function invalidateNote(note:Note):Void {
 		note.kill();
 		notes.remove(note, true);
 		note.destroy();
 	}
 
-	public function spawnNoteSplashOnNote(note:Note) {
+	function spawnNoteSplashOnNote(note:Note) {
 		if(note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null)
@@ -3143,7 +3143,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public function spawnNoteSplash(x:Float, y:Float, data:Int, note:Note, strum:StrumNote) {
+	function spawnNoteSplash(x:Float, y:Float, data:Int, note:Note, strum:StrumNote) {
 		var splash:NoteSplash = new NoteSplash();
 		splash.babyArrow = strum;
 		splash.spawnSplashNote(note);
@@ -3230,7 +3230,7 @@ if(eventNotes.length < 1) checkEventNote();
 		callOnScripts('onBeatHit');
 	}
 
-	public function characterBopper(beat:Int):Void
+	function characterBopper(beat:Int):Void
 	{
 		if (gf != null && beat % Math.round(gfSpeed * gf.danceEveryNumBeats) == 0 && !gf.getAnimationName().startsWith('sing') && !gf.stunned)
 			gf.dance();
@@ -3240,7 +3240,7 @@ if(eventNotes.length < 1) checkEventNote();
 			dad.dance();
 	}
 
-	public function playerDance():Void
+	function playerDance():Void
 	{
 		var anim:String = boyfriend.getAnimationName();
 		if(boyfriend.holdTimer > Conductor.stepCrochet * (0.0011 #if FLX_PITCH / FlxG.sound.music.pitch #end) * boyfriend.singDuration && anim.startsWith('sing') && !anim.endsWith('miss'))
@@ -3278,7 +3278,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	#if LUA_ALLOWED
-	public function startLuasNamed(luaFile:String)
+	function startLuasNamed(luaFile:String)
 	{
 		#if MODS_ALLOWED
 		var luaToLoad:String = Paths.modFolders(luaFile);
@@ -3302,7 +3302,7 @@ if(eventNotes.length < 1) checkEventNote();
 	#end
 
 	#if HSCRIPT_ALLOWED
-	public function startHScriptsNamed(scriptFile:String)
+	function startHScriptsNamed(scriptFile:String)
 	{
 		#if MODS_ALLOWED
 		var scriptToLoad:String = Paths.modFolders(scriptFile);
@@ -3322,7 +3322,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return false;
 	}
 
-	public function initHScript(file:String)
+	function initHScript(file:String)
 	{
 		var newScript:HScript = null;
 		try
@@ -3342,7 +3342,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 	#end
 
-	public function callOnScripts(funcToCall:String, args:Array<Dynamic> = null, ignoreStops = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
+	function callOnScripts(funcToCall:String, args:Array<Dynamic> = null, ignoreStops = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
 		var returnVal:String = LuaUtils.Function_Continue;
 		if(args == null) args = [];
 		if(exclusions == null) exclusions = [];
@@ -3353,7 +3353,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return result;
 	}
 
-	public function callOnLuas(funcToCall:String, args:Array<Dynamic> = null, ignoreStops = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
+	function callOnLuas(funcToCall:String, args:Array<Dynamic> = null, ignoreStops = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
 		var returnVal:String = LuaUtils.Function_Continue;
 		#if LUA_ALLOWED
 		if(args == null) args = [];
@@ -3392,7 +3392,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return returnVal;
 	}
 
-	public function callOnHScript(funcToCall:String, args:Array<Dynamic> = null, ?ignoreStops:Bool = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
+	function callOnHScript(funcToCall:String, args:Array<Dynamic> = null, ?ignoreStops:Bool = false, exclusions:Array<String> = null, excludeValues:Array<Dynamic> = null):Dynamic {
 		var returnVal:String = LuaUtils.Function_Continue;
 
 		#if HSCRIPT_ALLOWED
@@ -3434,13 +3434,13 @@ if(eventNotes.length < 1) checkEventNote();
 		return returnVal;
 	}
 
-	public function setOnScripts(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
+	function setOnScripts(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
 		if(exclusions == null) exclusions = [];
 		setOnLuas(variable, arg, exclusions);
 		setOnHScript(variable, arg, exclusions);
 	}
 
-	public function setOnLuas(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
+	function setOnLuas(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
 		#if LUA_ALLOWED
 		if(exclusions == null) exclusions = [];
 		for (script in luaArray) {
@@ -3452,7 +3452,7 @@ if(eventNotes.length < 1) checkEventNote();
 		#end
 	}
 
-	public function setOnHScript(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
+	function setOnHScript(variable:String, arg:Dynamic, exclusions:Array<String> = null) {
 		#if HSCRIPT_ALLOWED
 		if(exclusions == null) exclusions = [];
 		for (script in hscriptArray) {
@@ -3478,10 +3478,10 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public var ratingName:String = '?';
-	public var ratingPercent:Float;
-	public var ratingFC:String;
-	public function RecalculateRating(badHit:Bool = false) {
+	var ratingName:String = '?';
+	var ratingPercent:Float;
+	var ratingFC:String;
+	function RecalculateRating(badHit:Bool = false) {
 		setOnScripts('score', songScore);
 		setOnScripts('misses', songMisses);
 		setOnScripts('hits', songHits);
@@ -3584,8 +3584,8 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	#if (!flash && sys)
-	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
-	public function createRuntimeShader(name:String):FlxRuntimeShader
+	var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
+	function createRuntimeShader(name:String):FlxRuntimeShader
 	{
 		if(!ClientPrefs.data.shaders) return new FlxRuntimeShader();
 
@@ -3604,7 +3604,7 @@ if(eventNotes.length < 1) checkEventNote();
 		#end
 	}
 
-	public function initLuaShader(name:String, ?glslVersion:Int = 120)
+	function initLuaShader(name:String, ?glslVersion:Int = 120)
 	{
 		if(!ClientPrefs.data.shaders) return false;
 
