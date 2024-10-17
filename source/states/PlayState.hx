@@ -256,7 +256,7 @@ class PlayState extends MusicBeatState
 	var endCallback:Void->Void = null;
 
 	static var nextReloadAll:Bool = false;
-	override public function create()
+	override function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
 		Paths.clearStoredMemory();
@@ -1120,11 +1120,11 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	// fun fact: Dynamic Functions can be overriden by just doing this
+	// fun fact: functions can be overriden by just doing this
 	// `updateScore = function(miss:Bool = false) { ... }
 	// its like if it was a variable but its just a function!
 	// cool right? -Crow
-	dynamic function updateScore(miss:Bool = false)
+	function updateScore(miss:Bool = false)
 	{
 		var ret:Dynamic = callOnScripts('preUpdateScore', [miss], true);
 		if (ret == LuaUtils.Function_Stop)
@@ -1148,7 +1148,7 @@ if(eventNotes.length < 1) checkEventNote();
 		callOnScripts('onUpdateScore', [miss]);
 	}
 
-	dynamic function fullComboFunction()
+	function fullComboFunction()
 	{
 		var sicks:Int = ratingsData[0].hits;
 		var goods:Int = ratingsData[1].hits;
@@ -1586,13 +1586,13 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	override public function onFocus():Void
+	override function onFocus():Void
 	{
 		if (health > 0 && !paused) resetRPC(Conductor.songPosition > 0.0);
 		super.onFocus();
 	}
 
-	override public function onFocusLost():Void
+	override function onFocusLost():Void
 	{
 		#if DISCORD_ALLOWED
 		if (health > 0 && !paused && autoUpdateRPC) DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
@@ -1645,7 +1645,7 @@ if(eventNotes.length < 1) checkEventNote();
 	var freezeCamera:Bool = false;
 	var allowDebugKeys:Bool = true;
 
-	override public function update(elapsed:Float)
+	override function update(elapsed:Float)
 	{
 		if(!inCutscene && !paused && !freezeCamera) {
 			FlxG.camera.followLerp = 0.04 * cameraSpeed * playbackRate;
@@ -1847,7 +1847,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	// Health icon updaters
-	dynamic function updateIconsScale(elapsed:Float)
+	function updateIconsScale(elapsed:Float)
 	{
 		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
 		iconP1.scale.set(mult, mult);
@@ -1858,7 +1858,7 @@ if(eventNotes.length < 1) checkEventNote();
 		iconP2.updateHitbox();
 	}
 
-	dynamic function updateIconsPosition()
+	function updateIconsPosition()
 	{
 		var iconOffset:Int = 26;
 		iconP1.x = healthBar.barCenter + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
