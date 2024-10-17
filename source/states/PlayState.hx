@@ -1124,7 +1124,7 @@ if(eventNotes.length < 1) checkEventNote();
 	// `updateScore = function(miss:Bool = false) { ... }
 	// its like if it was a variable but its just a function!
 	// cool right? -Crow
-	public dynamic function updateScore(miss:Bool = false)
+	dynamic function updateScore(miss:Bool = false)
 	{
 		var ret:Dynamic = callOnScripts('preUpdateScore', [miss], true);
 		if (ret == LuaUtils.Function_Stop)
@@ -1148,7 +1148,7 @@ if(eventNotes.length < 1) checkEventNote();
 		callOnScripts('onUpdateScore', [miss]);
 	}
 
-	public dynamic function fullComboFunction()
+	dynamic function fullComboFunction()
 	{
 		var sicks:Int = ratingsData[0].hits;
 		var goods:Int = ratingsData[1].hits;
@@ -1847,7 +1847,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	// Health icon updaters
-	public dynamic function updateIconsScale(elapsed:Float)
+	dynamic function updateIconsScale(elapsed:Float)
 	{
 		var mult:Float = FlxMath.lerp(1, iconP1.scale.x, Math.exp(-elapsed * 9 * playbackRate));
 		iconP1.scale.set(mult, mult);
@@ -1858,7 +1858,7 @@ if(eventNotes.length < 1) checkEventNote();
 		iconP2.updateHitbox();
 	}
 
-	public dynamic function updateIconsPosition()
+	dynamic function updateIconsPosition()
 	{
 		var iconOffset:Int = 26;
 		iconP1.x = healthBar.barCenter + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
