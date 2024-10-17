@@ -75,10 +75,10 @@ import hxwindowmode.WindowColorMode;
 **/
 class PlayState extends MusicBeatState
 {
-	public static var STRUM_X = 42;
-	public static var STRUM_X_MIDDLESCROLL = -278;
+	static var STRUM_X = 42;
+	static var STRUM_X_MIDDLESCROLL = -278;
 
-	public static var ratingStuff:Array<Dynamic> = [
+	static var ratingStuff:Array<Dynamic> = [
 		['You Suck!', 0.2], //From 0% to 19%
 		['Shit', 0.4], //From 20% to 39%
 		['Bad', 0.5], //From 40% to 49%
@@ -119,19 +119,19 @@ class PlayState extends MusicBeatState
 	var boyfriendGroup:FlxSpriteGroup;
 	var dadGroup:FlxSpriteGroup;
 	var gfGroup:FlxSpriteGroup;
-	public static var curStage:String = '';
-	public static var stageUI:String = "normal";
-	public static var isPixelStage(get, never):Bool;
+	static var curStage:String = '';
+	static var stageUI:String = "normal";
+	static var isPixelStage(get, never):Bool;
 
 	@:noCompletion
 	static function get_isPixelStage():Bool
 		return stageUI == "pixel" || stageUI.endsWith("-pixel");
 
-	public static var SONG:SwagSong = null;
-	public static var isStoryMode:Bool = false;
-	public static var storyWeek:Int = 0;
-	public static var storyPlaylist:Array<String> = [];
-	public static var storyDifficulty:Int = 1;
+	static var SONG:SwagSong = null;
+	static var isStoryMode:Bool = false;
+	static var storyWeek:Int = 0;
+	static var storyPlaylist:Array<String> = [];
+	static var storyDifficulty:Int = 1;
 
 	var spawnTime:Float = 2000;
 
@@ -175,8 +175,8 @@ class PlayState extends MusicBeatState
 	var endingSong:Bool = false;
 	var startingSong:Bool = false;
 	private var updateTime:Bool = true;
-	public static var changedDifficulty:Bool = false;
-	public static var chartingMode:Bool = false;
+	static var changedDifficulty:Bool = false;
+	static var chartingMode:Bool = false;
 
 	//Gameplay settings
 	var healthGain:Float = 1;
@@ -205,17 +205,17 @@ class PlayState extends MusicBeatState
 	var timeTxt:FlxText;
 	var scoreTxtTween:FlxTween;
 
-	public static var campaignScore:Int = 0;
-	public static var campaignMisses:Int = 0;
-	public static var seenCutscene:Bool = false;
-	public static var deathCounter:Int = 0;
+	static var campaignScore:Int = 0;
+	static var campaignMisses:Int = 0;
+	static var seenCutscene:Bool = false;
+	static var deathCounter:Int = 0;
 
 	var defaultCamZoom:Float = 1.0;
 	var defaultStageZoom:Float = 1.05;
 	private static var zoomTween:FlxTween;
 
 	// how big to stretch the pixel art assets
-	public static var daPixelZoom:Float = 6;
+	static var daPixelZoom:Float = 6;
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
 	var inCutscene:Bool = false;
@@ -239,7 +239,7 @@ class PlayState extends MusicBeatState
 	var boyfriendIdled:Bool = false;
 
 	// Lua shit
-	public static var instance:PlayState;
+	static var instance:PlayState;
 	#if LUA_ALLOWED var luaArray:Array<FunkinLua> = []; #end
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
@@ -255,7 +255,7 @@ class PlayState extends MusicBeatState
 	var startCallback:Void->Void = null;
 	var endCallback:Void->Void = null;
 
-	public static var nextReloadAll:Bool = false;
+	static var nextReloadAll:Bool = false;
 	override public function create()
 	{
 		//trace('Playback Rate: ' + playbackRate);
@@ -927,7 +927,7 @@ if(eventNotes.length < 1) checkEventNote();
 	var countdownReady:FlxSprite;
 	var countdownSet:FlxSprite;
 	var countdownGo:FlxSprite;
-	public static var startOnTime:Float = 0;
+	static var startOnTime:Float = 0;
 
 	function cacheCountdown()
 	{
