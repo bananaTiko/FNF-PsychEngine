@@ -26,8 +26,8 @@ class Achievements {
 	public static function init()
 	{
 		createAchievement('monday_night_play',		{name: "Monday's Sucks", description: "Play on a Monday", hidden: true});
-                createAchievement('tuesday_night_play',		{name: "Tuesday Also Sucks", description: "Play on a Tuesday", hidden: true});
-                createAchievement('Wednesday_night_play',		{name: "Hump Day", description: "Play on a Wednesday", hidden: true});
+        createAchievement('tuesday_night_play',		{name: "Tuesday Also Sucks", description: "Play on a Tuesday", hidden: true});
+        createAchievement('wednesday_night_play',		{name: "Hump Day", description: "Play on a Wednesday", hidden: true});
 		createAchievement('thursday_night_play',		{name: "TGIT", description: "Play on a Thursday", hidden: true});
 		createAchievement('friday_night_play',		{name: "Freaky on a Friday Night", description: "Play on a Friday... Night.", hidden: true});
 		createAchievement('saturday_night_play',		{name: "No more freaking", description: "Play on a Saturday", hidden: true});

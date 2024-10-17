@@ -1051,7 +1051,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return true;
 	}
 
-	inline private function createCountdownSprite(image:String, antialias:Bool):FlxSprite
+	inline function createCountdownSprite(image:String, antialias:Bool):FlxSprite
 	{
 		var spr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(image));
 		spr.cameras = [camHUD];
