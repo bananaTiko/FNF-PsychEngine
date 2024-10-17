@@ -686,7 +686,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
-    public function addTextToDebug(text:String, color:FlxColor):Void {
+	function addTextToDebug(text:String, color:FlxColor):Void {
         var newText:psychlua.DebugLuaText = luaDebugGroup.recycle(psychlua.DebugLuaText);
         newText.text = text;
         newText.color = color;
