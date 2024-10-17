@@ -18,6 +18,7 @@ import lime.utils.Assets;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.events.KeyboardEvent;
 import haxe.Json;
+import flixel.util.FlxColor;
 
 import cutscenes.DialogueBoxPsych;
 
@@ -699,7 +700,6 @@ if(eventNotes.length < 1) checkEventNote();
         luaDebugGroup.add(newText);
         Sys.println(text);
     }
-}
 #end
 
 	public function reloadHealthBarColors() {
