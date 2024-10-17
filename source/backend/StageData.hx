@@ -98,8 +98,6 @@ class StageData {
 				return 'spooky';
 			case 'pico' | 'blammed' | 'philly' | 'philly-nice':
 				return 'philly';
-			case 'pico-Erect' | 'blammed-Erect' | 'philly-Erect' | 'philly-nice-Erect':
-				return 'phillyErect';
 			case 'milf' | 'satin-panties' | 'high':
 				return 'limo';
 			case 'cocoa' | 'eggnog':
@@ -113,21 +111,6 @@ class StageData {
 			case 'thorns':
 				return 'schoolEvil';
 			case 'ugh' | 'guns' | 'stress':
-				return 'tank';
-			//Erect Stuff
-			case 'bopeebo-Erect' | 'fresh-Erect' | 'dad-battle-Erect':
-				return 'backstage';
-			case 'spookeez-Erect' | 'south-Erect':
-				return 'spookyMansion';
-			case 'milf-Erect' | 'satin-panties-Erect' | 'high-Erect':
-				return 'limoNight';
-			case 'cocoa-Erect' | 'eggnog-Erect':
-				return 'mallErect';
-			case 'senpai-Erect' | 'roses-Erect':
-				return 'school';
-			case 'thorns-Erect':
-				return 'schoolEvil';
-			case 'ugh-Erect' | 'guns-Erect' | 'stress-Erect':
 				return 'tank';
 		}
 		return 'stage';
