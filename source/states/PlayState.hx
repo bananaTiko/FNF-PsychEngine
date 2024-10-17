@@ -686,7 +686,8 @@ if(eventNotes.length < 1) checkEventNote();
 }
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
-	public function addTextToDebug(text:String, color:FlxColor) {
+	public function addTextToDebug(text:String, color:FlxColor) 
+	{
 		var newText:psychlua.DebugLuaText = luaDebugGroup.recycle(psychlua.DebugLuaText);
 		newText.text = text;
 		newText.color = color;
@@ -698,9 +699,9 @@ if(eventNotes.length < 1) checkEventNote();
 			spr.y += newText.height + 2;
 		});
 		luaDebugGroup.add(newText);
-
 		Sys.println(text);
 	}
+}
 	#end
 
 	public function reloadHealthBarColors() {
