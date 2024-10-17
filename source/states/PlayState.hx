@@ -148,7 +148,7 @@ class PlayState extends MusicBeatState
 	var eventNotes:Array<EventNote> = [];
 
 	var camFollow:FlxObject;
-	private static var prevCamFollow:FlxObject;
+	var prevCamFollow:FlxObject;
 
 	var strumLineNotes:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
 	var opponentStrums:FlxTypedGroup<StrumNote> = new FlxTypedGroup<StrumNote>();
@@ -212,7 +212,7 @@ class PlayState extends MusicBeatState
 
 	var defaultCamZoom:Float = 1.0;
 	var defaultStageZoom:Float = 1.05;
-	private static var zoomTween:FlxTween;
+	var zoomTween:FlxTween;
 
 	// how big to stretch the pixel art assets
 	static var daPixelZoom:Float = 6;
@@ -1487,7 +1487,7 @@ if(eventNotes.length < 1) checkEventNote();
 		return 0;
 	}
 
-	public static function sortByTime(Obj1:Dynamic, Obj2:Dynamic):Int
+	function sortByTime(Obj1:Dynamic, Obj2:Dynamic):Int
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
 
 	function makeEvent(event:Array<Dynamic>, i:Int)
@@ -2767,7 +2767,7 @@ function moveCamera(isDad:Bool)
 		callOnScripts('onKeyPress', [key]);
 	}
 
-	public static function sortHitNotes(a:Note, b:Note):Int
+	function sortHitNotes(a:Note, b:Note):Int
 	{
 		if (a.lowPriority && !b.lowPriority)
 			return 1;
@@ -2800,7 +2800,7 @@ function moveCamera(isDad:Bool)
 		callOnScripts('onKeyRelease', [key]);
 	}
 
-	public static function getKeyFromEvent(arr:Array<String>, key:FlxKey):Int
+	function getKeyFromEvent(arr:Array<String>, key:FlxKey):Int
 	{
 		if(key != NONE)
 		{
@@ -3653,5 +3653,6 @@ function moveCamera(isDad:Bool)
 	}
 	
 	#end
+}
 }
 }
