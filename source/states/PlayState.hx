@@ -702,12 +702,12 @@ if(eventNotes.length < 1) checkEventNote();
     }
 #end
 
-	public function reloadHealthBarColors() {
+	function reloadHealthBarColors() {
 		healthBar.setColors(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
 			FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
 	}
 
-	public function addCharacterToList(newCharacter:String, type:Int) {
+	function addCharacterToList(newCharacter:String, type:Int) {
 		switch(type) {
 			case 0:
 				if(!boyfriendMap.exists(newCharacter)) {
@@ -809,7 +809,7 @@ if(eventNotes.length < 1) checkEventNote();
 		#end
 	}
 
-	public function getLuaObject(tag:String, text:Bool=true):FlxSprite
+	function getLuaObject(tag:String, text:Bool=true):FlxSprite
 		return variables.get(tag);
 
 	function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
@@ -823,7 +823,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	public var videoCutscene:VideoSprite = null;
-	public function startVideo(name:String, forMidSong:Bool = false, canSkip:Bool = true, loop:Bool = false, playOnLoad:Bool = true)
+	function startVideo(name:String, forMidSong:Bool = false, canSkip:Bool = true, loop:Bool = false, playOnLoad:Bool = true)
 	{
 		#if VIDEOS_ALLOWED
 		inCutscene = true;
@@ -890,7 +890,7 @@ if(eventNotes.length < 1) checkEventNote();
 	var dialogueCount:Int = 0;
 	public var psychDialogue:DialogueBoxPsych;
 	//You don't have to add a song, just saying. You can just do "startDialogue(DialogueBoxPsych.parseDialogue(Paths.json(songName + '/dialogue')))" and it should load dialogue.json
-	public function startDialogue(dialogueFile:DialogueFile, ?song:String = null):Void
+	function startDialogue(dialogueFile:DialogueFile, ?song:String = null):Void
 	{
 		// TO DO: Make this more flexible, maybe?
 		if(psychDialogue != null) return;
@@ -947,7 +947,7 @@ if(eventNotes.length < 1) checkEventNote();
 		Paths.sound('introGo' + introSoundsSuffix);
 	}
 
-	public function startCountdown()
+	function startCountdown()
 	{
 		if(startedCountdown) {
 			callOnScripts('onStartCountdown');
@@ -1075,20 +1075,20 @@ if(eventNotes.length < 1) checkEventNote();
 		return spr;
 	}
 
-	public function addBehindGF(obj:FlxBasic)
+	function addBehindGF(obj:FlxBasic)
 	{
 		insert(members.indexOf(gfGroup), obj);
 	}
-	public function addBehindBF(obj:FlxBasic)
+	function addBehindBF(obj:FlxBasic)
 	{
 		insert(members.indexOf(boyfriendGroup), obj);
 	}
-	public function addBehindDad(obj:FlxBasic)
+	function addBehindDad(obj:FlxBasic)
 	{
 		insert(members.indexOf(dadGroup), obj);
 	}
 
-	public function clearNotesBefore(time:Float)
+	function clearNotesBefore(time:Float)
 	{
 		var i:Int = unspawnNotes.length - 1;
 		while (i >= 0) {
@@ -1168,7 +1168,7 @@ if(eventNotes.length < 1) checkEventNote();
 		}
 	}
 
-	public function doScoreBop():Void {
+	function doScoreBop():Void {
 		if(!ClientPrefs.data.scoreZoom)
 			return;
 
@@ -1184,7 +1184,7 @@ if(eventNotes.length < 1) checkEventNote();
 		});
 	}
 
-	public function setSongTime(time:Float)
+	function setSongTime(time:Float)
 	{
 		FlxG.sound.music.pause();
 		vocals.pause();
@@ -1212,12 +1212,12 @@ if(eventNotes.length < 1) checkEventNote();
 		Conductor.songPosition = time;
 	}
 
-	public function startNextDialogue() {
+	function startNextDialogue() {
 		dialogueCount++;
 		callOnScripts('onNextDialogue', [dialogueCount]);
 	}
 
-	public function skipDialogue() {
+	function skipDialogue() {
 		callOnScripts('onSkipDialogue', [dialogueCount]);
 	}
 
