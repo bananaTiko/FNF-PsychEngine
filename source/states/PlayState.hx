@@ -1261,7 +1261,7 @@ if(eventNotes.length < 1) checkEventNote();
 	var eventsPushed:Array<String> = [];
 	var totalColumns: Int = 4;
 
-	private function generateSong():Void
+	function generateSong():Void
 	{
 		// FlxG.log.add(ChartParser.parse());
 		songSpeed = PlayState.SONG.speed;
@@ -1504,7 +1504,7 @@ if(eventNotes.length < 1) checkEventNote();
 	}
 
 	var skipArrowStartTween:Bool = false; //for lua
-	private function generateStaticArrows(player:Int):Void
+	function generateStaticArrows(player:Int):Void
 	{
 		var strumLineX:Float = ClientPrefs.data.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X;
 		var strumLineY:Float = ClientPrefs.data.downScroll ? (FlxG.height - 150) : 50;
@@ -2527,7 +2527,7 @@ function moveCamera(isDad:Bool)
 	// Stores Note Objects in a Group
 	var noteGroup:FlxTypedGroup<FlxBasic>;
 
-	private function cachePopUpScore()
+	function cachePopUpScore()
 	{
 		var uiPrefix:String = '';
 		var uiPostfix:String = '';
@@ -2543,7 +2543,7 @@ function moveCamera(isDad:Bool)
 			Paths.image(uiPrefix + 'num' + i + uiPostfix);
 	}
 
-	private function popUpScore(note:Note = null):Void
+	function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.data.ratingOffset);
 		vocals.volume = 1;
@@ -2689,7 +2689,7 @@ function moveCamera(isDad:Bool)
 	}
 
 	var strumsBlocked:Array<Bool> = [];
-	private function onKeyPress(event:KeyboardEvent):Void
+	function onKeyPress(event:KeyboardEvent):Void
 	{
 
 		var eventKey:FlxKey = event.keyCode;
@@ -2706,7 +2706,7 @@ function moveCamera(isDad:Bool)
 		}
 	}
 
-	private function keyPressed(key:Int)
+	function keyPressed(key:Int)
 	{
 		if(cpuControlled || paused || inCutscene || key < 0 || key >= playerStrums.length || !generatedMusic || endingSong || boyfriend.stunned) return;
 
@@ -2777,14 +2777,14 @@ function moveCamera(isDad:Bool)
 		return FlxSort.byValues(FlxSort.ASCENDING, a.strumTime, b.strumTime);
 	}
 
-	private function onKeyRelease(event:KeyboardEvent):Void
+	function onKeyRelease(event:KeyboardEvent):Void
 	{
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(keysArray, eventKey);
 		if(!controls.controllerMode && key > -1) keyReleased(key);
 	}
 
-	private function keyReleased(key:Int)
+	function keyReleased(key:Int)
 	{
 		if(cpuControlled || !startedCountdown || paused || key < 0 || key >= playerStrums.length) return;
 
@@ -2816,7 +2816,7 @@ function moveCamera(isDad:Bool)
 	}
 
 	// Hold notes
-	private function keysCheck():Void
+	function keysCheck():Void
 	{
 		// HOLDING
 		var holdArray:Array<Bool> = [];
@@ -3518,7 +3518,7 @@ function moveCamera(isDad:Bool)
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
-	private function checkForAchievement(achievesToCheck:Array<String> = null)
+	function checkForAchievement(achievesToCheck:Array<String> = null)
 	{
 		if(chartingMode) return;
 
