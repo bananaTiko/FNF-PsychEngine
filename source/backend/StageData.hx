@@ -101,7 +101,7 @@ class StageData {
 			case 'milf' | 'satin-panties' | 'high':
 				return 'limo';
 			case 'cocoa' | 'eggnog':
-				return 'mall'
+				return 'mall';
 			case 'cocoa' | 'eggnog':
 			return 'mall';
 			case 'winter-horrorland':
