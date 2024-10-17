@@ -92,7 +92,7 @@ class PlayState extends MusicBeatState
 	];
 
 	//event variables
-	private var isCameraOnForcedPos:Bool = false;
+	var isCameraOnForcedPos:Bool = false;
 
 	var boyfriendMap:Map<String, Character> = new Map<String, Character>();
 	var dadMap:Map<String, Character> = new Map<String, Character>();
@@ -159,7 +159,7 @@ class PlayState extends MusicBeatState
 	var camZoomingMult:Float = 1;
     var camZoomingFrequency:Float = 4;
 	var camZoomingDecay:Float = 1;
-	private var curSong:String = "";
+	var curSong:String = "";
 
 	var gfSpeed:Int = 1;
 	var health(default, set):Float = 1;
@@ -171,10 +171,10 @@ class PlayState extends MusicBeatState
 
 	var ratingsData:Array<Rating> = Rating.loadDefault();
 
-	private var generatedMusic:Bool = false;
+	var generatedMusic:Bool = false;
 	var endingSong:Bool = false;
 	var startingSong:Bool = false;
-	private var updateTime:Bool = true;
+	var updateTime:Bool = true;
 	static var changedDifficulty:Bool = false;
 	static var chartingMode:Bool = false;
 
@@ -216,7 +216,7 @@ class PlayState extends MusicBeatState
 
 	// how big to stretch the pixel art assets
 	static var daPixelZoom:Float = 6;
-	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
+	var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
 	var inCutscene:Bool = false;
 	var skipCountdown:Bool = false;
@@ -243,12 +243,12 @@ class PlayState extends MusicBeatState
 	#if LUA_ALLOWED var luaArray:Array<FunkinLua> = []; #end
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
-	private var luaDebugGroup:FlxTypedGroup<psychlua.DebugLuaText>;
+	var luaDebugGroup:FlxTypedGroup<psychlua.DebugLuaText>;
 	#end
 	var introSoundsSuffix:String = '';
 
 	// Less laggy controls
-	private var keysArray:Array<String>;
+	var keysArray:Array<String>;
 	var songName:String;
 
 	// Callbacks for stages
@@ -1257,9 +1257,9 @@ if(eventNotes.length < 1) checkEventNote();
 		callOnScripts('onSongStart');
 	}
 
-	private var noteTypes:Array<String> = [];
-	private var eventsPushed:Array<String> = [];
-	private var totalColumns: Int = 4;
+	var noteTypes:Array<String> = [];
+	var eventsPushed:Array<String> = [];
+	var totalColumns: Int = 4;
 
 	private function generateSong():Void
 	{
