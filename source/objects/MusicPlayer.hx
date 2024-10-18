@@ -5,7 +5,6 @@ import flixel.ui.FlxBar;
 import flixel.util.FlxStringUtil;
 
 import states.FreeplayState;
-
 #if windows
 import states.PlatformUtil;
 #end
@@ -105,27 +104,26 @@ class MusicPlayer extends FlxGroup
 			#if windows
 			PlatformUtil.sendWindowsNotification([songName] 'was paused');
 			#end
-		}
-	}
+}
 
 		//if(FlxG.keys.justPressed.K) trace('Time: ${FreeplayState.vocals.time}, Playing: ${FreeplayState.vocals.playing}');
 
 		if (controls.UI_LEFT_P)
-		{
-			if (playing)
-				wasPlaying = true;
-
-			pauseOrResume();
-
-			curTime = FlxG.sound.music.time - 1000;
-			instance.holdTime = 0;
-
-			if (curTime < 0)
-				curTime = 0;
-
-			FlxG.sound.music.time = curTime;
-			setVocalsTime(curTime);
-		}
+			{
+				if (playing)
+					wasPlaying = true;
+	
+				pauseOrResume();
+	
+				curTime = FlxG.sound.music.time - 1000;
+				instance.holdTime = 0;
+	
+				if (curTime < 0)
+					curTime = 0;
+	
+				FlxG.sound.music.time = curTime;
+				setVocalsTime(curTime);
+			}
 		if (controls.UI_RIGHT_P)
 		{
 			if (playing)
@@ -379,4 +377,5 @@ class MusicPlayer extends FlxGroup
 		if (value > 3) value = 3;
 		else if (value <= 0.25) value = 0.25;
 		return playbackRate = value;
+	}
 }
