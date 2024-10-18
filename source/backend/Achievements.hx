@@ -25,13 +25,13 @@ typedef Achievement =
 class Achievements {
 	public static function init()
 	{
-		createAchievement('monday_night_play',		{name: "Monday's Sucks", description: "Play on a Monday", hidden: true});
-        createAchievement('tuesday_night_play',		{name: "Tuesday Also Sucks", description: "Play on a Tuesday", hidden: true});
-        createAchievement('wednesday_night_play',		{name: "Hump Day", description: "Play on a Wednesday", hidden: true});
-		createAchievement('thursday_night_play',		{name: "TGIT", description: "Play on a Thursday", hidden: true});
+		createAchievement('monday_night_play',		{name: "Monday's Sucks", description: "Play on a Monday...", hidden: true});
+        createAchievement('tuesday_night_play',		{name: "Tuesday Also Sucks", description: "Play on a Tuesday...", hidden: true});
+        createAchievement('wednesday_night_play',		{name: "Hump Day", description: "Play on a Wednesday...", hidden: true});
+		createAchievement('thursday_night_play',		{name: "TGIT", description: "Play on a Thursday...", hidden: true});
 		createAchievement('friday_night_play',		{name: "Freaky on a Friday Night", description: "Play on a Friday... Night.", hidden: true});
-		createAchievement('saturday_night_play',		{name: "No more freaking", description: "Play on a Saturday", hidden: true});
-		createAchievement('sunday_night_play',		{name: "Still no freaking", description: "Play on a Sunday", hidden: true});
+		createAchievement('saturday_night_play',		{name: "Can't Get Freaky", description: "Play on a Saturday...", hidden: true});
+		createAchievement('sunday_night_play',		{name: "", description: "Play on a Sunday...", hidden: true});
 		createAchievement('week1_nomiss',			{name: "She Calls Me Daddy Too", description: "Beat Week 1 on Hard with no Misses."});
 		createAchievement('week2_nomiss',			{name: "No More Tricks", description: "Beat Week 2 on Hard with no Misses."});
 		createAchievement('week3_nomiss',			{name: "Call Me The Hitman", description: "Beat Week 3 on Hard with no Misses."});

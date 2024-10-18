@@ -104,6 +104,7 @@ class MusicPlayer extends FlxGroup
 			#if windows
 			PlatformUtil.sendWindowsNotification([songName] 'was paused');
 			#end
+}
 
 		//if(FlxG.keys.justPressed.K) trace('Time: ${FreeplayState.vocals.time}, Playing: ${FreeplayState.vocals.playing}');
 
