@@ -15,7 +15,8 @@ import hxwindowmode.WindowColorMode;
 import states.PlatformUtil;
 #end
 
-
+import funkin.*;
+import funkin.components.*;
 
 #if ACHIEVEMENTS_ALLOWED
 import backend.Achievements;
@@ -53,6 +54,9 @@ import states.LoadingState;
 import flxanimate.*;
 import flxanimate.PsychFlxAnimate as FlxAnimate;
 #end
+
+// Mod libs
+import flixel.ui.FlxBar;
 
 //Flixel
 import flixel.sound.FlxSound;
