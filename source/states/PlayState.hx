@@ -684,7 +684,6 @@ if(eventNotes.length < 1) checkEventNote();
 		#end
 		return playbackRate;
 	}
-}
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 	public function addTextToDebug(text:String, color:FlxColor) {
@@ -701,8 +700,8 @@ if(eventNotes.length < 1) checkEventNote();
 		luaDebugGroup.add(newText);
 
 		Sys.println(text);
-	}
 	#end
+}
 
 	public function reloadHealthBarColors() {
 		healthBar.setColors(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
