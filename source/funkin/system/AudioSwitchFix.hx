@@ -57,7 +57,7 @@ class AudioSwitchFix {
 
     public static function init() {
         #if windows
-		funkin.WindowsAPI.registerAudio();
+		funkin.windows.WindowsAPI.registerAudio();
         FlxG.signals.preStateCreate.add(onStateSwitch);
         #end
     }

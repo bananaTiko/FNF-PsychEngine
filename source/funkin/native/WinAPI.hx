@@ -1,4 +1,4 @@
-package native;
+package funkin.native;
 
 #if windows
 @:buildXml('
