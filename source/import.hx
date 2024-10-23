@@ -55,7 +55,7 @@ import flxanimate.PsychFlxAnimate as FlxAnimate;
 //funkin shit
 import funkin.*;
 import funkin.components.*;
-import funkin.Windows.*;
+import funkin.windows.*;
 import funkin.native.*;
 import funkin.system.*;
 
