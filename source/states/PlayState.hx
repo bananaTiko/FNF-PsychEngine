@@ -634,74 +634,68 @@ class PlayState extends MusicBeatState
 		cacheCountdown();
 		cachePopUpScore();
 
-if(eventNotes.length < 1) checkEventNote();
-	if(isPixelStage) {
-		for (note in unspawnNotes) {
-		if(note.isSustainNote) {
-			note.scale.x /= 1.5;
-		}
-	}
-
-	
-	function set_songSpeed(value:Float):Float
-	{
-		if(generatedMusic)
-		{
-			var ratio:Float = value / songSpeed; //funny word huh
-			if(ratio != 1)
-			{
-				for (note in notes.members) note.resizeByRatio(ratio);
-				for (note in unspawnNotes) note.resizeByRatio(ratio);
+		if(eventNotes.length < 1) checkEventNote();
+		if(isPixelStage) {
+			for (note in unspawnNotes) {
+				if(note.isSustainNote) {
+					note.scale.x /= 1.5;
+				}
 			}
 		}
-		songSpeed = value;
-		noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
-		return value;
-	}
-
-	function set_playbackRate(value:Float):Float
-	{
-		#if FLX_PITCH
-		if(generatedMusic)
-		{
-			vocals.pitch = value;
-			opponentVocals.pitch = value;
-			FlxG.sound.music.pitch = value;
-
-			var ratio:Float = playbackRate / value; //funny word huh
-			if(ratio != 1)
-			{
-				for (note in notes.members) note.resizeByRatio(ratio);
-				for (note in unspawnNotes) note.resizeByRatio(ratio);
+		
+		function set_songSpeed(value:Float):Float {
+			if(generatedMusic) {
+				var ratio:Float = value / songSpeed;
+				if(ratio != 1) {
+					for (note in notes.members) note.resizeByRatio(ratio);
+					for (note in unspawnNotes) note.resizeByRatio(ratio);
+				}
 			}
+			songSpeed = value;
+			noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
+			return value;
 		}
-		playbackRate = value;
-		FlxG.animationTimeScale = value;
-		Conductor.safeZoneOffset = (ClientPrefs.data.safeFrames / 60) * 1000 * value;
-		setOnScripts('playbackRate', playbackRate);
-		#else
-		playbackRate = 1.0; // ensuring -Crow
+		
+		function set_playbackRate(value:Float):Float {
+			#if FLX_PITCH
+			if(generatedMusic) {
+				vocals.pitch = value;
+				opponentVocals.pitch = value;
+				FlxG.sound.music.pitch = value;
+		
+				var ratio:Float = playbackRate / value;
+				if(ratio != 1) {
+					for (note in notes.members) note.resizeByRatio(ratio);
+					for (note in unspawnNotes) note.resizeByRatio(ratio);
+				}
+			}
+			playbackRate = value;
+			FlxG.animationTimeScale = value;
+			Conductor.safeZoneOffset = (ClientPrefs.data.safeFrames / 60) * 1000 * value;
+			setOnScripts('playbackRate', playbackRate);
+			#else
+			playbackRate = 1.0;
+			#end
+			return playbackRate;
+		}
+		
+		#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
+		public function addTextToDebug(text:String, color:FlxColor) {
+			var newText:psychlua.DebugLuaText = luaDebugGroup.recycle(psychlua.DebugLuaText);
+			newText.text = text;
+			newText.color = color;
+			newText.disableTime = 6;
+			newText.alpha = 1;
+			newText.setPosition(10, 8 - newText.height);
+		
+			luaDebugGroup.forEachAlive(function(spr:psychlua.DebugLuaText) {
+				spr.y += newText.height + 2;
+			});
+			luaDebugGroup.add(newText);
+		
+			Sys.println(text);
+		}
 		#end
-		return playbackRate;
-	}
-
-	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
-	public function addTextToDebug(text:String, color:FlxColor) {
-		var newText:psychlua.DebugLuaText = luaDebugGroup.recycle(psychlua.DebugLuaText);
-		newText.text = text;
-		newText.color = color;
-		newText.disableTime = 6;
-		newText.alpha = 1;
-		newText.setPosition(10, 8 - newText.height);
-
-		luaDebugGroup.forEachAlive(function(spr:psychlua.DebugLuaText) {
-			spr.y += newText.height + 2;
-		});
-		luaDebugGroup.add(newText);
-
-		Sys.println(text);
-	#end
-}
 
 	public function reloadHealthBarColors() {
 		healthBar.setColors(FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]),
