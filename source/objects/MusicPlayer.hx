@@ -96,14 +96,8 @@ class MusicPlayer extends FlxGroup
 		var songName:String = instance.songs[FreeplayState.curSelected].songName;
 		if (playing && !wasPlaying) {
 			songTxt.text = Language.getPhrase('musicplayer_playing', 'PLAYING: {1}', [songName]);
-			#if windows
-			PlatformUtil.sendWindowsNotification([songName], 'is being played');
-			#end
 		} else {
-			songTxt.text = Language.getPhrase('musicplayer_paused', 'PLAYING: {1} (PAUSED)', [songName]);
-			#if windows
-			PlatformUtil.sendWindowsNotification([songName], 'was paused');
-			#end
+			songTxt.text = Language.getPhrase('musicplayer_paused', 'PLAYING: {1} (PAUSED)', songName);
 		}
 
 		//if(FlxG.keys.justPressed.K) trace('Time: ${FreeplayState.vocals.time}, Playing: ${FreeplayState.vocals.playing}');
