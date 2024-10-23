@@ -26,7 +26,7 @@ class WindowsAPI {
      */
     public static function setDarkMode(enable:Bool) {
         #if windows
-        funkin.native.WinAPI..setDarkMode(enable);
+        funkin.native.WinAPI.setDarkMode(enable);
         #end
     }
 
