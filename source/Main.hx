@@ -153,11 +153,9 @@ class Main extends Sprite
 		gameObject._customSoundTray = backend.FunkinSoundTray;
 		addChild(gameObject);
 
-		@:dox(hide)
 		public static var audioDisconnected:Bool = false;
-		
+	
 		public static var changeID:Int = 0;
-		
 
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
@@ -193,7 +191,7 @@ class Main extends Sprite
 		FlxG.keys.preventDefaultKeys = [TAB];
 
 		AudioSwitchFix.init();
-		
+
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
