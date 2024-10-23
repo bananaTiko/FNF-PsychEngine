@@ -55,14 +55,14 @@ import flxanimate.PsychFlxAnimate as FlxAnimate;
 //funkin shit
 import funkin.*;
 import funkin.components.*;
-import funkin.Windows*;
-import funkin.native*;
-import funkin.system*;
+import funkin.Windows.*;
+import funkin.native.*;
+import funkin.system.*;
 
 //audio fix shit
-import lime._internal.backend.native*;
-import lime.media*;
-import openfl.media*;
+import lime._internal.backend.native.*;
+import lime.media.*;
+import openfl.media.*;
 
 // Mod libs
 import flixel.ui.FlxBar;
