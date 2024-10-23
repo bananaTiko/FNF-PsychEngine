@@ -1,14 +1,14 @@
 package;
 
-import openfl.display.FPS;
-
 #if android
 import android.content.Context;
 #end
 
 import backend.ColorBlindness;
-//import debug.FPSCounter; 
-// will Uncomment if openfl.display.fps doesn't work
+
+import debug.FPSCounter; 
+// will Uncomment if openfl.display.fps doesn't work 
+// 10/22/24-- So I forgot I removed openfl.display.fps so I'm uncommenting debug.FPSCounter
 import funkin.components.MemoryCounter;
 
 import flixel.graphics.FlxGraphic;
