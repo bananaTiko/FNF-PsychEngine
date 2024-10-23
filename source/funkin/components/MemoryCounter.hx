@@ -33,3 +33,4 @@ class MemoryCounter extends TextField
     if (mem > memPeak) memPeak = mem;
     text = 'RAM: ${mem}mb / ${memPeak}mb';
   }
+}

@@ -374,8 +374,8 @@ class MusicPlayer extends FlxGroup
 	function set_playbackRate(value:Float):Float 
 	{
 		var value = FlxMath.roundDecimal(value, 2);
-		if (value > 3) value = 3;
-		else if (value <= 0.25) value = 0.25;
+		if (value > 10.0) value = 10.0;
+		else if (value <= 0.1) value = 0.1;
 		return playbackRate = value;
 	}
 }

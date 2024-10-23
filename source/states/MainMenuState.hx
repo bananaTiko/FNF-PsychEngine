@@ -29,8 +29,7 @@ class MainMenuState extends MusicBeatState
 		'story_mode',
 		'freeplay',
 		#if MODS_ALLOWED 'mods', #end
-		'credits',
-		'bios'
+		'credits'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
@@ -322,9 +321,6 @@ class MainMenuState extends MusicBeatState
 
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
-
-							case 'Bios':
-								MusicBeatState.switchState(new BiosMenuStateState());
 
 							case 'donate':
 								CoolUtil.browserLoad('https://needlejuicerecords.com/pages/friday-night-funkin');
