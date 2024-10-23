@@ -7,8 +7,8 @@ import android.content.Context;
 import backend.ColorBlindness;
 
 import debug.FPSCounter; 
-
-import funkin.windows.WindowsAPI;
+// will Uncomment if openfl.display.fps doesn't work 
+// 10/22/24-- So I forgot I removed openfl.display.fps so I'm uncommenting debug.FPSCounter
 import funkin.components.MemoryCounter;
 
 import flixel.graphics.FlxGraphic;
@@ -74,12 +74,8 @@ class Main extends Sprite
 
 	public static var fpsVar:FPSCounter;
 	public static var memoryCounter:MemoryCounter;
+
 	public static var colorFilter:ColorBlindness;
-
-	@:dox(hide)
-    public static var audioDisconnected:Bool = false;
-
-    public static var changeID:Int = 0;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -189,8 +185,6 @@ class Main extends Sprite
 		FlxG.fixedTimestep = false;
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.keys.preventDefaultKeys = [TAB];
-
-		AudioSwitchFix.init();
 		
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);

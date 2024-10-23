@@ -15,6 +15,9 @@ import hxwindowmode.WindowColorMode;
 import states.PlatformUtil;
 #end
 
+import funkin.*;
+import funkin.components.*;
+
 #if ACHIEVEMENTS_ALLOWED
 import backend.Achievements;
 #end
@@ -51,21 +54,6 @@ import states.LoadingState;
 import flxanimate.*;
 import flxanimate.PsychFlxAnimate as FlxAnimate;
 #end
-
-//funkin shit
-import funkin.*;
-import funkin.components.*;
-import funkin.windows.*;
-import funkin.native.*;
-import funkin.system.*;
-
-//audio fix shit
-import lime._internal.backend.native.*;
-import lime.media.*;
-import openfl.media.*;
-
-// Mod libs
-import flixel.ui.FlxBar;
 
 //Flixel
 import flixel.sound.FlxSound;
