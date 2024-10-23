@@ -684,6 +684,7 @@ if(eventNotes.length < 1) checkEventNote();
 		#end
 		return playbackRate;
 	}
+}
 
 	#if (LUA_ALLOWED || HSCRIPT_ALLOWED)
 	public function addTextToDebug(text:String, color:FlxColor) {
