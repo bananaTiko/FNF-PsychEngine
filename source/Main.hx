@@ -66,7 +66,7 @@ class Main extends Sprite
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
 		initialState: TitleState, // initial game state
-		zoom: -1.0, // game state bounds
+		zoom: -1, // game state bounds
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
 		startFullscreen: false // if the game should start at fullscreen mode
@@ -103,19 +103,6 @@ class Main extends Sprite
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
-
-		// Prevent flixel from listening to key inputs when switching fullscreen mode
-		// also lets you fullscreen with F11
-		// thanks @nebulazorua, @crowplexus, @diogotvv
-		FlxG.stage.addEventListener(openfl.events.KeyboardEvent.KEY_DOWN, (e) ->
-		{
-			if (e.keyCode == FlxKey.F11)
-				FlxG.fullscreen = !FlxG.fullscreen;
-			
-			if (e.keyCode == FlxKey.ENTER && e.altKey)
-				e.stopImmediatePropagation();
-		}, false, 100);
-
 		#if VIDEOS_ALLOWED
 		hxvlc.util.Handle.init(#if (hxvlc >= "1.8.0")  ['--no-lua'] #end);
 		#end

@@ -102,7 +102,6 @@ class StageData {
 				return 'limo';
 			case 'cocoa' | 'eggnog':
 				return 'mall';
-			case 'cocoa' | 'eggnog':
 			return 'mall';
 			case 'winter-horrorland':
 				return 'mallEvil';

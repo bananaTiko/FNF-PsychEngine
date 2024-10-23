@@ -92,9 +92,7 @@ class BaseStage extends FlxBasic
 	public function goodNoteHit(note:Note) {}
 	public function opponentNoteHit(note:Note) {}	
 
-	// Note Hit/Miss
-	public function goodNoteHit(note:Note) {}
-	public function opponentNoteHit(note:Note) {}
+	// Note miss stuff
 	public function noteMiss(note:Note) {}
 	public function noteMissPress(direction:Int) {}
 
