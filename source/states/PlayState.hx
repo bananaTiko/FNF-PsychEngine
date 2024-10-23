@@ -635,10 +635,14 @@ class PlayState extends MusicBeatState
 		cachePopUpScore();
 
 		if(eventNotes.length < 1) checkEventNote();
+	}
+
 		if(isPixelStage) {
 			for (note in unspawnNotes) {
 				if(note.isSustainNote) {
 					note.scale.x /= 1.5;
+					note.alpha = 1;
+					note.multAlpha = 1;
 				}
 			}
 		}
@@ -3646,7 +3650,5 @@ class PlayState extends MusicBeatState
 		#end
 		return false;
 	}
-	
 	#end
-}
 }
