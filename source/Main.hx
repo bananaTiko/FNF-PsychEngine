@@ -7,8 +7,8 @@ import android.content.Context;
 import backend.ColorBlindness;
 
 import debug.FPSCounter; 
-// will Uncomment if openfl.display.fps doesn't work 
-// 10/22/24-- So I forgot I removed openfl.display.fps so I'm uncommenting debug.FPSCounter
+
+import funkin.windows.WindowsAPI;
 import funkin.components.MemoryCounter;
 
 import flixel.graphics.FlxGraphic;
