@@ -74,8 +74,12 @@ class Main extends Sprite
 
 	public static var fpsVar:FPSCounter;
 	public static var memoryCounter:MemoryCounter;
-
 	public static var colorFilter:ColorBlindness;
+
+	@:dox(hide)
+    public static var audioDisconnected:Bool = false;
+
+    public static var changeID:Int = 0;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -153,10 +157,6 @@ class Main extends Sprite
 		gameObject._customSoundTray = backend.FunkinSoundTray;
 		addChild(gameObject);
 
-		public static var audioDisconnected:Bool = false;
-	
-		public static var changeID:Int = 0;
-
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
@@ -191,7 +191,7 @@ class Main extends Sprite
 		FlxG.keys.preventDefaultKeys = [TAB];
 
 		AudioSwitchFix.init();
-
+		
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
