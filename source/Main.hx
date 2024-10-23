@@ -157,6 +157,7 @@ class Main extends Sprite
 		public static var audioDisconnected:Bool = false;
 		
 		public static var changeID:Int = 0;
+		
 
 		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
