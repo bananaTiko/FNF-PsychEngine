@@ -31,7 +31,7 @@ class Achievements {
 		createAchievement('thursday_night_play',		{name: "TGIT", description: "Play on a Thursday...", hidden: true});
 		createAchievement('friday_night_play',		{name: "Freaky on a Friday Night", description: "Play on a Friday... Night.", hidden: true});
 		createAchievement('saturday_night_play',		{name: "Can't Get Freaky", description: "Play on a Saturday...", hidden: true});
-		createAchievement('sunday_night_play',		{name: "", description: "Play on a Sunday...", hidden: true});
+		createAchievement('sunday_night_play',		{name: "Sunday's No Fun Day", description: "Play on a Sunday...", hidden: true});
 		createAchievement('week1_nomiss',			{name: "She Calls Me Daddy Too", description: "Beat Week 1 on Hard with no Misses."});
 		createAchievement('week2_nomiss',			{name: "No More Tricks", description: "Beat Week 2 on Hard with no Misses."});
 		createAchievement('week3_nomiss',			{name: "Call Me The Hitman", description: "Beat Week 3 on Hard with no Misses."});
