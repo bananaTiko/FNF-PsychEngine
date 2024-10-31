@@ -208,6 +208,24 @@ class Main extends Sprite
 		});
 	}
 
+#if windows	
+var changedWindowBar:Bool = false;
+public static function onChangeWindowBar() {
+		if (ClientPrefs.data.windowBar == 'Light') {
+			WindowColorMode.setLightMode();
+			WindowColorMode.redrawWindowHeader();
+		} else if (ClientPrefs.data.windowBar == 'Dark') {
+			WindowColorMode.setDarkMode();
+			WindowColorMode.redrawWindowHeader();
+		} else {
+			WindowColorMode.setLightMode(); // Default action for 'else'
+			WindowColorMode.redrawWindowHeader();
+		}
+
+		changedWindowBar = true;
+	}
+	#end
+
 	static function resetSpriteCache(sprite:Sprite):Void {
 		@:privateAccess {
 		        sprite.__cacheBitmap = null;
@@ -266,10 +284,6 @@ class Main extends Sprite
 		#end
 
         FlxG.sound.play(Paths.sound('error'));
-
-		#if windows
-		PlatformUtil.sendWindowsNotification('Untitled Psych Fork has crashed', 'Please report this error to the GitHub page: https://github.com/bananaTiko/FNF-UntitledPsychFork');
-		#end
 
 		#if DISCORD_ALLOWED
 		DiscordClient.shutdown();
