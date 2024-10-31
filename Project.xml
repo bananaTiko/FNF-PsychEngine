@@ -2,9 +2,17 @@
 <project>
     <!-- _________________________ Application Settings _________________________ -->
 
-    <app file="FNF-UPF" packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
+    <app packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
+    <!--Release App File/Title shit-->
     <app title="Friday Night Funkin': Untitled Psych Fork" unless="debug" />
-    <app title="Friday Night Funkin': Untitled Psych Fork (debug)" if="debug"/> 
+    <app file="FNF-UPF-Release" unless="debug" />
+    <app title="Friday Night Funkin': Untitled Psych Fork (32 Bit)" if="32bits" unless="debug" />
+    <app file="FNF-UPF-Release-32Bit" if="32bits" unless="debug" />
+    <!--Debug App File/Title shit-->
+    <app title="Friday Night Funkin': Untitled Psych Fork (debug) " if="debug"/> 
+    <app file="FNF-UPF-Debug" if="debug"/>
+    <app title="Friday Night Funkin': Untitled Psych Fork (debug) (32 Bit)" if="debug && 32bits"/> 
+    <app file="FNF-UPF-Debug-32Bit" if="debug && 32bits" />
 
     <!-- Switch Export with Unique ApplicationID and Icon -->
     <set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -69,7 +77,7 @@
     <!-- __________________________ Game Assets & Etc. __________________________ -->
     
     <!-- Turn on Crash Handler -->
-    <define name="CRASH_HANDLER" if="desktop" unless="debug"/>
+    <define name="CRASH_HANDLER" if="desktop debug"/>
 
     <!-- Assets -->
     <assets path="assets/fonts" />
@@ -165,9 +173,6 @@
 
 	<!--Disable the Flixel core focus lost screen-->
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
-
-	<!--Allow working memory greater than 1 Gig-->
-	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
 
 	<!--More functions w/ hxcpp-->
 	<haxedef name="HXCPP_GC_MOVING"/>    

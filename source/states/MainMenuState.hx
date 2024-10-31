@@ -29,7 +29,8 @@ class MainMenuState extends MusicBeatState
 		'story_mode',
 		'freeplay',
 		#if MODS_ALLOWED 'mods', #end
-		'credits'
+		'credits',
+		'donate'
 	];
 
 	var leftOption:String = #if ACHIEVEMENTS_ALLOWED 'achievements' #else null #end;
@@ -274,11 +275,15 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT || (FlxG.mouse.justPressed && allowMouse))
 			{
-				FlxG.sound.play(Paths.sound('confirmMenu'));
-				if (optionShit[curSelected] != 'donate')
-				{
+				if (optionShit[curSelected] == 'donate')
+					{
+						CoolUtil.browserLoad('https://needlejuicerecords.com/pages/friday-night-funkin');
+					}
+					else
+					{
 					selectedSomethin = true;
 					FlxG.mouse.visible = false;
+					FlxG.sound.play(Paths.sound('confirmMenu'));
 
 					if (ClientPrefs.data.flashing)
 						FlxFlicker.flicker(magenta, 1.1, 0.15, false);
@@ -321,9 +326,6 @@ class MainMenuState extends MusicBeatState
 
 							case 'credits':
 								MusicBeatState.switchState(new CreditsState());
-
-							case 'donate':
-								CoolUtil.browserLoad('https://needlejuicerecords.com/pages/friday-night-funkin');
 
 							case 'options':
 								MusicBeatState.switchState(new OptionsState());

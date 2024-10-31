@@ -12,11 +12,8 @@ import llua.Lua;
 
 #if windows
 import hxwindowmode.WindowColorMode;
-import states.PlatformUtil;
 #end
 
-import funkin.*;
-import funkin.components.*;
 
 #if ACHIEVEMENTS_ALLOWED
 import backend.Achievements;
