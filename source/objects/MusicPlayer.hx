@@ -5,9 +5,6 @@ import flixel.ui.FlxBar;
 import flixel.util.FlxStringUtil;
 
 import states.FreeplayState;
-#if windows
-import states.PlatformUtil;
-#end
 
 /**
  * Music player used for Freeplay
