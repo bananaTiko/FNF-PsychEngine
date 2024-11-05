@@ -2,16 +2,12 @@
 <project>
     <!-- _________________________ Application Settings _________________________ -->
 
-    <app packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
+    <app title="Friday Night Funkin': Untitled Psych Fork"  packageName="com.BT2.UPF" package="com.BT2.UPF" main="Main" version="0.2.8" company="BT2" />
     <!--Release App File/Title shit-->
-    <app title="Friday Night Funkin': Untitled Psych Fork" unless="debug" />
     <app file="FNF-UPF-Release" unless="debug" />
-    <app title="Friday Night Funkin': Untitled Psych Fork (32 Bit)" if="32bits" unless="debug" />
     <app file="FNF-UPF-Release-32Bit" if="32bits" unless="debug" />
     <!--Debug App File/Title shit-->
-    <app title="Friday Night Funkin': Untitled Psych Fork (debug) " if="debug"/> 
     <app file="FNF-UPF-Debug" if="debug"/>
-    <app title="Friday Night Funkin': Untitled Psych Fork (debug) (32 Bit)" if="debug && 32bits"/> 
     <app file="FNF-UPF-Debug-32Bit" if="debug && 32bits" />
 
     <!-- Switch Export with Unique ApplicationID and Icon -->

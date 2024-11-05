@@ -7,8 +7,10 @@ import android.content.Context;
 import backend.ColorBlindness;
 
 import debug.FPSCounter; 
+import openfl.display.FPS;
 // will Uncomment if openfl.display.fps doesn't work 
 // 10/22/24-- So I forgot I removed openfl.display.fps so I'm uncommenting debug.FPSCounter
+//11/4/24-- guh having to import both openfl and debug fps counters lets hope this works
 
 import flixel.graphics.FlxGraphic;
 import flixel.FlxGame;
@@ -192,8 +194,13 @@ class Main extends Sprite
 				}
 			}
 
-			if (FlxG.game != null)
+		if (FlxG.game != null)
 			resetSpriteCache(FlxG.game);
+		});
+
+		FlxG.stage.window.onClose.add(function() {
+			// closed
+			FileSystem.deleteFile('modsList.txt');
 		});
 	}
 
@@ -272,7 +279,7 @@ class Main extends Sprite
 		Sys.command("notify-send",["Error!",errMsg]);
 		#end
 
-        FlxG.sound.play(Paths.sound('error'));
+        // FlxG.sound.play(Paths.sound('error'));
 
 		#if DISCORD_ALLOWED
 		DiscordClient.shutdown();
