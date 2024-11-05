@@ -72,7 +72,6 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:FPSCounter;
-	public static var memoryCounter:MemoryCounter;
 
 	public static var colorFilter:ColorBlindness;
 

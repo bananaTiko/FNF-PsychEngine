@@ -264,8 +264,6 @@ function onChangeWindowBar() {
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.data.showFPS;
-		if(Main.memoryCounter != null)
-			Main.memoryCounter.visible = ClientPrefs.data.showFPS;
 	}
 	#end
 }
