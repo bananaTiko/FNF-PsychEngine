@@ -161,15 +161,6 @@ class Main extends Sprite
 		}
 		#end
 
-		#if !html5
-		// TODO: disabled on HTML5 (todo: find another method that works?)
-		memoryCounter = new MemoryCounter(10, 13, 0xFFFFFF);
-		addChild(memoryCounter);
-		if(memoryCounter != null) {
-			memoryCounter.visible = ClientPrefs.data.showFPS;
-		}
-		#end
-
 		#if linux
 		var icon = Image.fromFile("icon.png");
 		Lib.current.stage.window.setIcon(icon);
