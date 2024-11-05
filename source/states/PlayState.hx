@@ -53,6 +53,11 @@ import psychlua.HScript;
 import crowplexus.iris.Iris;
 #end
 
+import StringTools; // idk if psych imports it automatically
+
+//import random shit lol
+//
+
 #if windows
 import hxwindowmode.WindowColorMode;
 #end
