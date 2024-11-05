@@ -9,7 +9,6 @@ import backend.ColorBlindness;
 import debug.FPSCounter; 
 // will Uncomment if openfl.display.fps doesn't work 
 // 10/22/24-- So I forgot I removed openfl.display.fps so I'm uncommenting debug.FPSCounter
-import funkin.components.MemoryCounter;
 
 import flixel.graphics.FlxGraphic;
 import flixel.FlxGame;
@@ -200,7 +199,7 @@ class Main extends Sprite
 			   for (cam in FlxG.cameras.list) {
 				if (cam != null && cam.filters != null)
 					resetSpriteCache(cam.flashSprite);
-			   }
+				}
 			}
 
 			if (FlxG.game != null)
@@ -208,9 +207,9 @@ class Main extends Sprite
 		});
 	}
 
-// #if windows	
-// var changedWindowBar:Bool = false;
-// public static function onChangeWindowBar() {
+//  #if windows	
+// 	var changedWindowBar:Bool = false
+//  function onChangeWindowBar() {
 // 		if (ClientPrefs.data.windowBar == 'Light') {
 // 			WindowColorMode.setLightMode();
 // 			WindowColorMode.redrawWindowHeader();
