@@ -36,6 +36,10 @@ import hxwindowmode.WindowColorMode;
 import lime.graphics.Image;
 #end
 
+//audio fix stuff
+import backend.api.WinAPI;
+import backend.AudioSwitchFix;
+
 //crash handler stuff
 #if CRASH_HANDLER
 import openfl.events.UncaughtErrorEvent;
@@ -140,6 +144,20 @@ class Main extends Sprite
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
 		Highscore.load();
 
+		//backend.AudioSwitchFix.init();
+
+		#if windows
+		var time:Float = 0; var prev:Float = -1;
+		addEventListener(Event.ENTER_FRAME, e -> {
+			time += FlxG.elapsed;
+			if (Std.int(prev) != Std.int(time)) {
+				isDarkMode = Windows.allowDarkMode();
+				AudioUtil.checkForDisconnect();
+			}
+			prev = time;
+		});
+		#end
+
 		#if LUA_ALLOWED Lua.set_callbacks_function(cpp.Callable.fromStaticFunction(psychlua.CallbackHandler.call)); #end
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
@@ -203,6 +221,25 @@ class Main extends Sprite
 		});
 	}
 
+
+	@:dox(hide)
+	public static var audioDisconnected:Bool = false; // Used for checking for audio device errors.
+
+	#if windows
+	private override function __update(transformOnly:Bool, updateChildren:Bool):Void
+	{
+	super.__update(transformOnly, updateChildren);
+	if (Main.audioDisconnected) AudioSwitchFix.reloadAudioDevice();
+	}
+	#end
+
+	static function resetSpriteCache(sprite:Sprite):Void {
+		@:privateAccess {
+		        sprite.__cacheBitmap = null;
+			sprite.__cacheBitmapData = null;
+		}
+	}
+
 //  #if windows	
 // 	var changedWindowBar:Bool = false
 //  function onChangeWindowBar() {
@@ -220,14 +257,6 @@ class Main extends Sprite
 // 		changedWindowBar = true;
 // 	}
 // 	#end
-
-	static function resetSpriteCache(sprite:Sprite):Void {
-		@:privateAccess {
-		        sprite.__cacheBitmap = null;
-			sprite.__cacheBitmapData = null;
-		}
-	}
-
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
 	#if CRASH_HANDLER

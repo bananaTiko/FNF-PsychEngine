@@ -225,6 +225,29 @@ class Paths
 		return graph;
 	}
 
+	/**
+	 * Dumps from memory sound or image graphic
+	 * 
+	 * WARNING: can crash game if this graphic is used! Use `graph.useCount` variable to avoid this
+	 */
+	public static function dumpAsset(key:String) {
+		if (key == null) return;
+
+		if (currentTrackedSounds.remove(key)) {
+			OpenFlAssets.cache.removeSound(key);
+			currentTrackedSounds.remove(key);
+		}
+
+		var graph:FlxGraphic = FlxG.bitmap._cache.get(key);
+		if (graph != null) {
+			if (graph.bitmap?.__texture != null)
+				graph.bitmap.__texture.dispose();
+			OpenFlAssets.cache.removeBitmapData(key);
+			FlxG.bitmap._cache.remove(key);
+			currentTrackedImages.remove(key);
+		}
+	}
+
 	inline static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
 		var path:String = getPath(key, TEXT, true);
