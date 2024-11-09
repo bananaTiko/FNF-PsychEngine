@@ -3116,9 +3116,9 @@ class PlayState extends MusicBeatState
 		if(result != LuaUtils.Function_Stop && result != LuaUtils.Function_StopHScript && result != LuaUtils.Function_StopAll) callOnHScript('goodNoteHit', [note]);
 		if(!note.isSustainNote) {
 			invalidateNote(note);
-			if (note.rating == 'bad' || note.rating == 'shit') {
-				makeGhostNote(note);
-			}
+			// if (note.rating == 'bad' || note.rating == 'shit') {
+			// 	makeGhostNote(note);
+			// }
 		}
 	stagesFunc(function(stage:BaseStage) stage.goodNoteHit(note));
 }
@@ -3561,21 +3561,21 @@ class PlayState extends MusicBeatState
 	}
 	#end
 
-	function makeGhostNote(note:Note) {
-		var ghost = new Note(note.strumTime, note.noteData, null, note.isSustainNote);
-		ghost.noteType = 'MISSED_NOTE';
-		ghost.multAlpha = note.multAlpha * .5;
-		ghost.mustPress = note.mustPress;
-		ghost.ignoreNote = true;
-		ghost.blockHit = true;
-		notes.add(ghost);
-		ghost.rgbShader.r.saturation = .2;
-		ghost.rgbShader.g.saturation = .2;
-		ghost.rgbShader.b.saturation = .2;
-		ghost.rgbShader.r = ghost.rgbShader.r;
-		ghost.rgbShader.g = ghost.rgbShader.g;
-		ghost.rgbShader.b = ghost.rgbShader.b;
-	}
+	// function makeGhostNote(note:Note) {
+	// 	var ghost = new Note(note.strumTime, note.noteData, null, note.isSustainNote);
+	// 	ghost.noteType = 'MISSED_NOTE';
+	// 	ghost.multAlpha = note.multAlpha * .5;
+	// 	ghost.mustPress = note.mustPress;
+	// 	ghost.ignoreNote = true;
+	// 	ghost.blockHit = true;
+	// 	notes.add(ghost);
+	// 	ghost.rgbShader.r.saturation = .2;
+	// 	ghost.rgbShader.g.saturation = .2;
+	// 	ghost.rgbShader.b.saturation = .2;
+	// 	ghost.rgbShader.r = ghost.rgbShader.r;
+	// 	ghost.rgbShader.g = ghost.rgbShader.g;
+	// 	ghost.rgbShader.b = ghost.rgbShader.b;
+	// }
 
 	#if (!flash && sys)
 	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
